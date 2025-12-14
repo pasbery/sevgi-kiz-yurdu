@@ -1,0 +1,2491 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güneş Kız Öğrenci Yurdu | Evinizden Uzakta Eviniz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    'xs': '375px',   // Küçük mobil
+                    'sm': '640px',   // Büyük mobil
+                    'md': '768px',   // Tablet
+                    'lg': '1024px',  // Laptop
+                    'xl': '1280px',  // Desktop
+                    '2xl': '1536px', // Büyük ekran
+                },
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        secondary: '#A78BFA',
+                        accent: '#DDD6FE',
+                        dark: '#4C1D95',
+                        light: '#F5F3FF',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Poppins', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #7C3AED, #EC4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.25);
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .float-slow {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        .float-delayed {
+            animation: floatDelayed 3.5s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+        @keyframes floatDelayed {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
+        }
+        .float-gentle {
+            animation: floatGentle 5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        @keyframes floatGentle {
+            0%, 100% { transform: translateX(0px) translateY(0px); }
+            25% { transform: translateX(5px) translateY(-5px); }
+            75% { transform: translateX(-5px) translateY(5px); }
+        }
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+        }
+        .feature-card:hover .feature-icon {
+            animation: iconBounce 0.6s ease;
+        }
+        @keyframes iconBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.2) rotate(-10deg); }
+            50% { transform: scale(1.1) rotate(10deg); }
+            75% { transform: scale(1.15) rotate(-5deg); }
+        }
+        .pulse-subtle {
+            animation: pulseShadow 3s ease-in-out infinite;
+        }
+        @keyframes pulseShadow {
+            0%, 100% { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+            50% { box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.15); }
+        }
+        .animate-badge {
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% { 
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 20px 5px rgba(139, 92, 246, 0.3);
+                transform: scale(1.02);
+            }
+        }
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .room-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+        }
+        body {
+            background-color: #FAFAFA;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navbar -->
+    <div class="fixed top-0 left-0 right-0 z-50 p-2 xs:p-2.5 sm:p-3 md:p-4 transition-all duration-500 ease-out" id="navbar-wrapper">
+        <nav class="max-w-6xl mx-auto bg-white md:bg-white/95 backdrop-blur-xl rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg shadow-black/5 border border-white/50 transition-all duration-500 ease-out" id="navbar">
+            <div class="px-3 xs:px-4 sm:px-5 md:px-6 py-2.5 xs:py-3 sm:py-3.5 md:py-4 transition-all duration-500 ease-out" id="navbar-inner">
+                <div class="flex justify-between items-center">
+                    <!-- Logo -->
+                    <a href="#anasayfa" class="flex items-center gap-2 sm:gap-3 group">
+                        <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-primary to-pink-500 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg shadow-primary/25 group-hover:shadow-primary/40 group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-sun text-white text-sm sm:text-base group-hover:rotate-180 transition-transform duration-700"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <span class="text-base sm:text-lg font-bold text-gray-800 inline-block group-hover:-translate-y-full transition-transform duration-300">Güneş<span class="text-primary">Yurdu</span></span>
+                            <span class="text-base sm:text-lg font-bold text-primary block -mt-5 sm:-mt-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">Güneş<span class="text-pink-500">Yurdu</span></span>
+                        </div>
+                    </a>
+                    
+                    <!-- Center Navigation - Animated -->
+                    <div class="hidden lg:flex items-center bg-gray-100/80 rounded-full p-1.5 gap-1">
+                        <a href="#anasayfa" class="nav-link group relative px-5 py-2 rounded-full text-sm font-medium text-gray-600 hover:text-white transition-all duration-300 overflow-hidden">
+                            <span class="relative z-10">Ana Sayfa</span>
+                            <span class="absolute inset-0 bg-primary scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full origin-center"></span>
+                        </a>
+                        <a href="#hakkimizda" class="nav-link group relative px-5 py-2 rounded-full text-sm font-medium text-gray-600 hover:text-white transition-all duration-300 overflow-hidden">
+                            <span class="relative z-10">Hakkımızda</span>
+                            <span class="absolute inset-0 bg-primary scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full origin-center"></span>
+                        </a>
+                        <a href="#odalar" class="nav-link group relative px-5 py-2 rounded-full text-sm font-medium text-gray-600 hover:text-white transition-all duration-300 overflow-hidden">
+                            <span class="relative z-10">Odalar</span>
+                            <span class="absolute inset-0 bg-primary scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full origin-center"></span>
+                        </a>
+                        <a href="#ozellikler" class="nav-link group relative px-5 py-2 rounded-full text-sm font-medium text-gray-600 hover:text-white transition-all duration-300 overflow-hidden">
+                            <span class="relative z-10">Özellikler</span>
+                            <span class="absolute inset-0 bg-primary scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full origin-center"></span>
+                        </a>
+                        <a href="#galeri" class="nav-link group relative px-5 py-2 rounded-full text-sm font-medium text-gray-600 hover:text-white transition-all duration-300 overflow-hidden">
+                            <span class="relative z-10">Galeri</span>
+                            <span class="absolute inset-0 bg-primary scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full origin-center"></span>
+                        </a>
+                        <a href="#iletisim" class="nav-link group relative px-5 py-2 rounded-full text-sm font-medium text-gray-600 hover:text-white transition-all duration-300 overflow-hidden">
+                            <span class="relative z-10">İletişim</span>
+                            <span class="absolute inset-0 bg-primary scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full origin-center"></span>
+                        </a>
+                    </div>
+                    
+                    <!-- Right Side -->
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <!-- Kayıt Badge - Scroll'da görünür, otomatik boyut -->
+                        <a href="#iletisim" id="scroll-badge" class="hidden items-center gap-1 sm:gap-1.5 bg-gradient-to-r from-primary to-pink-500 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full opacity-0 scale-90 transition-all duration-300 hover:shadow-lg animate-badge">
+                            <span class="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>
+                            <span class="text-[9px] sm:text-[10px] font-bold text-white whitespace-nowrap">Kayıtlar Açık</span>
+                        </a>
+                        <!-- Telefon - Sadece büyük ekranlarda -->
+                        <a href="tel:03121234567" class="hidden lg:flex items-center gap-2 text-gray-500 hover:text-primary transition-all text-sm">
+                            <i class="fas fa-phone text-xs"></i>
+                            <span class="font-medium">0312 123 45 67</span>
+                        </a>
+                        <!-- Mobil Menü Butonu -->
+                        <button class="lg:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-all" id="mobile-menu-btn">
+                            <i class="fas fa-bars text-sm" id="menu-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Panel -->
+            <div id="mobile-menu" class="lg:hidden hidden">
+                <div class="px-4 pb-4 pt-2 border-t border-gray-100">
+                    <div class="flex flex-col gap-1">
+                        <a href="#anasayfa" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-home w-5"></i>
+                            <span class="font-medium">Ana Sayfa</span>
+                        </a>
+                        <a href="#hakkimizda" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-info-circle w-5"></i>
+                            <span class="font-medium">Hakkımızda</span>
+                        </a>
+                        <a href="#odalar" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-bed w-5"></i>
+                            <span class="font-medium">Odalar</span>
+                        </a>
+                        <a href="#ozellikler" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-star w-5"></i>
+                            <span class="font-medium">Özellikler</span>
+                        </a>
+                        <a href="#galeri" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-images w-5"></i>
+                            <span class="font-medium">Galeri</span>
+                        </a>
+                        <a href="#iletisim" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-primary hover:text-white transition-all">
+                            <i class="fas fa-envelope w-5"></i>
+                            <span class="font-medium">İletişim</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile CTA -->
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <a href="#iletisim" class="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-primary to-pink-500 text-white py-3 rounded-xl font-semibold">
+                            <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                            2024-2025 Kayıtları Açık
+                        </a>
+                        <a href="tel:03121234567" class="flex items-center justify-center gap-2 w-full mt-2 bg-gray-100 text-gray-700 py-3 rounded-xl font-medium">
+                            <i class="fas fa-phone"></i>
+                            0312 123 45 67
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="anasayfa" class="min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] md:min-h-screen flex items-center bg-white relative overflow-hidden pt-16 xs:pt-18 sm:pt-20 md:pt-24">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-violet-50 to-pink-50"></div>
+        <div class="absolute top-20 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl hidden md:block"></div>
+        <div class="absolute bottom-20 left-20 w-72 h-72 bg-pink-200/20 rounded-full blur-3xl hidden md:block"></div>
+        
+        <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 py-6 xs:py-8 sm:py-10 md:py-16 lg:py-32 relative z-10">
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-center">
+                <!-- Text Content -->
+                <div class="text-center md:text-left">
+                    <div class="inline-flex items-center gap-1.5 xs:gap-2 bg-primary/10 px-2.5 xs:px-3 sm:px-4 py-1 xs:py-1.5 sm:py-2 rounded-full mb-3 xs:mb-4 sm:mb-6 md:mb-8">
+                        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full animate-pulse"></span>
+                        <span class="text-[10px] xs:text-xs sm:text-sm font-medium text-primary">2024-2025 Kayıtları Başladı</span>
+                    </div>
+                    
+                    <h1 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-2 xs:mb-3 sm:mb-4 md:mb-6">
+                        Evinizden Uzakta,
+                        <span class="block gradient-text">Sıcak Bir Yuva</span>
+                    </h1>
+                    
+                    <p class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-gray-500 mb-4 sm:mb-6 max-w-lg leading-relaxed mx-auto md:mx-0">
+                        Güvenli, konforlu ve huzurlu bir yaşam alanı.
+                    </p>
+                    
+                    <!-- Slider - Sadece mobilde görünür -->
+                    <div class="md:hidden mb-4 sm:mb-6 relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl">
+                        <div class="flex transition-transform duration-500 ease-out" id="hero-slider">
+                            <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=500&h=300&fit=crop" alt="Yurt Odası" class="w-full h-36 xs:h-40 sm:h-48 md:h-56 object-cover flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&h=300&fit=crop" alt="Ortak Alan" class="w-full h-36 xs:h-40 sm:h-48 md:h-56 object-cover flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&h=300&fit=crop" alt="Çalışma Alanı" class="w-full h-36 xs:h-40 sm:h-48 md:h-56 object-cover flex-shrink-0">
+                        </div>
+                        <!-- Gradient Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+                        <!-- Slider Info -->
+                        <div class="absolute bottom-2 xs:bottom-3 left-2 xs:left-3 right-2 xs:right-3 flex justify-between items-end">
+                            <div class="text-white">
+                                <p class="text-[10px] xs:text-xs opacity-80">Keşfet</p>
+                                <p class="font-semibold text-xs xs:text-sm" id="slider-title">Yurt Odası</p>
+                            </div>
+                            <div class="flex gap-1 xs:gap-1.5">
+                                <button class="slider-dot w-1.5 h-1.5 xs:w-2 xs:h-2 rounded-full bg-white transition-all" data-slide="0"></button>
+                                <button class="slider-dot w-1.5 h-1.5 xs:w-2 xs:h-2 rounded-full bg-white/50 transition-all" data-slide="1"></button>
+                                <button class="slider-dot w-1.5 h-1.5 xs:w-2 xs:h-2 rounded-full bg-white/50 transition-all" data-slide="2"></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Butonlar - Tablet ve üstünde -->
+                    <div class="hidden md:flex flex-row gap-3 md:gap-4 mb-8 md:mb-12">
+                        <a href="#iletisim" class="group bg-gray-900 text-white px-6 xl:px-8 py-3 xl:py-4 rounded-full font-medium hover:bg-primary transition-all flex items-center justify-center gap-2">
+                            Hemen Başvur
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#odalar" class="px-6 xl:px-8 py-3 xl:py-4 rounded-full font-medium text-gray-700 hover:text-primary transition border border-gray-200 hover:border-primary text-center">
+                            Odaları İncele
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="flex justify-center md:justify-start gap-4 xs:gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+                        <div class="text-center md:text-left">
+                            <div class="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">500+</div>
+                            <div class="text-gray-400 text-[10px] xs:text-xs sm:text-sm mt-0.5 sm:mt-1">Mutlu Öğrenci</div>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <div class="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">15+</div>
+                            <div class="text-gray-400 text-[10px] xs:text-xs sm:text-sm mt-0.5 sm:mt-1">Yıl Tecrübe</div>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <div class="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">4.9</div>
+                            <div class="text-gray-400 text-[10px] xs:text-xs sm:text-sm mt-0.5 sm:mt-1">Puan</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Floating Image -->
+                <div class="relative hidden md:block">
+                    <div class="floating">
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&h=700&fit=crop" 
+                             alt="Yurt Odası" 
+                             class="rounded-3xl shadow-2xl w-full max-w-md mx-auto">
+                    </div>
+                    <!-- Feature Cards - Animated -->
+                    <div class="absolute -bottom-5 -left-5 bg-white p-4 rounded-2xl shadow-xl float-slow">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-green-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">7/24 Güvenlik</p>
+                                <p class="text-sm text-gray-500">Kamera Sistemi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-5 -right-5 bg-white p-4 rounded-2xl shadow-xl float-delayed">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-wifi text-purple-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Yüksek Hızlı</p>
+                                <p class="text-sm text-gray-500">Fiber İnternet</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute top-1/2 -right-10 bg-white p-4 rounded-2xl shadow-xl float-gentle">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-utensils text-orange-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">3 Öğün</p>
+                                <p class="text-sm text-gray-500">Yemek Dahil</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="hakkimizda" class="py-12 lg:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                <!-- Resim - Laptop altında gizli -->
+                <div class="relative hidden lg:block">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=500&fit=crop" 
+                         alt="Yurt Hakkında" 
+                         class="rounded-3xl shadow-xl w-full">
+                    <div class="absolute -bottom-8 -right-8 bg-gradient-to-r from-primary to-secondary p-6 rounded-2xl text-white shadow-xl">
+                        <div class="text-4xl font-bold">15+</div>
+                        <div class="text-sm opacity-90">Yıllık Deneyim</div>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-primary font-semibold text-sm uppercase tracking-wider">Hakkımızda</span>
+                    <h2 class="text-2xl lg:text-4xl font-bold text-gray-800 mt-2 lg:mt-3 mb-4 lg:mb-6">
+                        Öğrencilerimizin <span class="gradient-text">İkinci Evi</span>
+                    </h2>
+                    <!-- Laptop altında kısa, laptop ve üstünde uzun metin -->
+                    <p class="text-gray-700 leading-relaxed mb-4 lg:mb-6 text-sm lg:text-base">
+                        <span class="lg:hidden">2009'dan beri güvenli ve konforlu yaşam alanı sunuyoruz. Aile sıcaklığında bir ortam.</span>
+                        <span class="hidden lg:inline">2009 yılından bu yana, üniversite öğrencilerine güvenli ve konforlu bir yaşam alanı sunuyoruz. 
+                        Güneş Kız Öğrenci Yurdu olarak misyonumuz, öğrencilerimizin akademik başarılarına odaklanabilecekleri, 
+                        huzurlu ve destekleyici bir ortam sağlamaktır.</span>
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mb-6 lg:mb-8 hidden lg:block">
+                        Modern tesislerimiz, deneyimli kadromuz ve aile sıcaklığındaki yaklaşımımızla, 
+                        ailelerinden uzakta olan kız öğrencilerimizin kendilerini evlerinde hissetmelerini sağlıyoruz.
+                    </p>
+                    <!-- Özellikler - Laptop altında kompakt -->
+                    <div class="grid grid-cols-2 gap-3 lg:gap-6">
+                        <div class="flex items-center gap-2 lg:gap-3">
+                            <div class="w-8 h-8 lg:w-12 lg:h-12 bg-purple-50 rounded-lg lg:rounded-xl flex items-center justify-center">
+                                <i class="fas fa-check text-primary text-sm lg:text-xl"></i>
+                            </div>
+                            <span class="font-medium text-gray-700 text-xs lg:text-base">Merkezi Konum</span>
+                        </div>
+                        <div class="flex items-center gap-2 lg:gap-3">
+                            <div class="w-8 h-8 lg:w-12 lg:h-12 bg-violet-50 rounded-lg lg:rounded-xl flex items-center justify-center">
+                                <i class="fas fa-check text-violet-400 text-sm lg:text-xl"></i>
+                            </div>
+                            <span class="font-medium text-gray-700 text-xs lg:text-base">Modern Odalar</span>
+                        </div>
+                        <div class="flex items-center gap-2 lg:gap-3">
+                            <div class="w-8 h-8 lg:w-12 lg:h-12 bg-purple-50 rounded-lg lg:rounded-xl flex items-center justify-center">
+                                <i class="fas fa-check text-primary text-sm lg:text-xl"></i>
+                            </div>
+                            <span class="font-medium text-gray-700 text-xs lg:text-base">3 Öğün Yemek</span>
+                        </div>
+                        <div class="flex items-center gap-2 lg:gap-3">
+                            <div class="w-8 h-8 lg:w-12 lg:h-12 bg-violet-50 rounded-lg lg:rounded-xl flex items-center justify-center">
+                                <i class="fas fa-check text-violet-400 text-sm lg:text-xl"></i>
+                            </div>
+                            <span class="font-medium text-gray-700 text-xs lg:text-base">Etüt Odaları</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="ozellikler" class="py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+                <span class="text-primary font-semibold text-[10px] xs:text-xs sm:text-sm uppercase tracking-wider">Özelliklerimiz</span>
+                <h2 class="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mt-1.5 xs:mt-2 sm:mt-3">
+                    Neden <span class="gradient-text">Güneş Yurdu?</span>
+                </h2>
+                <p class="text-gray-700 mt-2 sm:mt-3 md:mt-4 max-w-2xl mx-auto text-xs sm:text-sm md:text-base hidden sm:block">
+                    Öğrencilerimizin konforunu ve güvenliğini ön planda tutarak, en iyi hizmeti sunuyoruz.
+                </p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 xs:gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+                <!-- Feature 1 -->
+                <div class="bg-white p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl feature-card pulse-subtle cursor-pointer">
+                    <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 lg:mb-6 feature-icon">
+                        <i class="fas fa-shield-alt text-white text-xs xs:text-sm sm:text-base md:text-lg lg:text-2xl"></i>
+                    </div>
+                    <h3 class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-800 mb-0.5 xs:mb-1 sm:mb-2 lg:mb-3">7/24 Güvenlik</h3>
+                    <p class="text-gray-600 text-[10px] xs:text-xs sm:text-sm lg:text-base hidden sm:block">Kesintisiz koruma.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-white p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl feature-card pulse-subtle cursor-pointer" style="animation-delay: 0.5s;">
+                    <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-orange-400 to-pink-500 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 lg:mb-6 feature-icon">
+                        <i class="fas fa-utensils text-white text-xs xs:text-sm sm:text-base md:text-lg lg:text-2xl"></i>
+                    </div>
+                    <h3 class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-800 mb-0.5 xs:mb-1 sm:mb-2 lg:mb-3">3 Öğün Yemek</h3>
+                    <p class="text-gray-600 text-[10px] xs:text-xs sm:text-sm lg:text-base hidden sm:block">Sağlıklı yemekler.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl feature-card pulse-subtle cursor-pointer" style="animation-delay: 1s;">
+                    <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 lg:mb-6 feature-icon">
+                        <i class="fas fa-wifi text-white text-xs xs:text-sm sm:text-base md:text-lg lg:text-2xl"></i>
+                    </div>
+                    <h3 class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-800 mb-0.5 xs:mb-1 sm:mb-2 lg:mb-3">Fiber İnternet</h3>
+                    <p class="text-gray-600 text-[10px] xs:text-xs sm:text-sm lg:text-base hidden sm:block">Hızlı internet.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-white p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl feature-card pulse-subtle cursor-pointer" style="animation-delay: 1.5s;">
+                    <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-purple-400 to-violet-500 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 lg:mb-6 feature-icon">
+                        <i class="fas fa-book-reader text-white text-xs xs:text-sm sm:text-base md:text-lg lg:text-2xl"></i>
+                    </div>
+                    <h3 class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-800 mb-0.5 xs:mb-1 sm:mb-2 lg:mb-3">Etüt Odaları</h3>
+                    <p class="text-gray-600 text-[10px] xs:text-xs sm:text-sm lg:text-base hidden sm:block">Çalışma alanları.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="bg-white p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl feature-card pulse-subtle cursor-pointer" style="animation-delay: 2s;">
+                    <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-pink-400 to-rose-500 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 lg:mb-6 feature-icon">
+                        <i class="fas fa-tshirt text-white text-xs xs:text-sm sm:text-base md:text-lg lg:text-2xl"></i>
+                    </div>
+                    <h3 class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-800 mb-0.5 xs:mb-1 sm:mb-2 lg:mb-3">Çamaşırhane</h3>
+                    <p class="text-gray-600 text-[10px] xs:text-xs sm:text-sm lg:text-base hidden sm:block">Modern makineler.</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="bg-white p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl feature-card pulse-subtle cursor-pointer" style="animation-delay: 2.5s;">
+                    <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 lg:mb-6 feature-icon">
+                        <i class="fas fa-tv text-white text-xs xs:text-sm sm:text-base md:text-lg lg:text-2xl"></i>
+                    </div>
+                    <h3 class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-800 mb-0.5 xs:mb-1 sm:mb-2 lg:mb-3">Sosyal Alanlar</h3>
+                    <p class="text-gray-600 text-[10px] xs:text-xs sm:text-sm lg:text-base hidden sm:block">TV ve dinlenme.</p>
+                </div>
+                <!-- Feature 7 -->
+                <div class="bg-white p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl feature-card pulse-subtle cursor-pointer" style="animation-delay: 3s;">
+                    <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-sky-400 to-blue-500 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 lg:mb-6 feature-icon">
+                        <i class="fas fa-snowflake text-white text-xs xs:text-sm sm:text-base md:text-lg lg:text-2xl"></i>
+                    </div>
+                    <h3 class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-800 mb-0.5 xs:mb-1 sm:mb-2 lg:mb-3">Klima Sistemi</h3>
+                    <p class="text-gray-600 text-[10px] xs:text-xs sm:text-sm lg:text-base hidden sm:block">Yıl boyu konfor.</p>
+                </div>
+                <!-- Feature 8 -->
+                <div class="bg-white p-3 xs:p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-3xl feature-card pulse-subtle cursor-pointer" style="animation-delay: 3.5s;">
+                    <div class="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-2 xs:mb-3 sm:mb-4 lg:mb-6 feature-icon">
+                        <i class="fas fa-bus text-white text-xs xs:text-sm sm:text-base md:text-lg lg:text-2xl"></i>
+                    </div>
+                    <h3 class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-gray-800 mb-0.5 xs:mb-1 sm:mb-2 lg:mb-3">Servis Hizmeti</h3>
+                    <p class="text-gray-600 text-[10px] xs:text-xs sm:text-sm lg:text-base hidden sm:block">Kolay ulaşım.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="odalar" class="py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-6 xs:mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+                <span class="text-primary font-semibold text-[10px] xs:text-xs sm:text-sm uppercase tracking-wider">Oda Tipleri</span>
+                <h2 class="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mt-1.5 xs:mt-2 sm:mt-3">
+                    Konforlu <span class="gradient-text">Oda Seçeneklerimiz</span>
+                </h2>
+                <p class="text-gray-600 mt-2 sm:mt-3 md:mt-4 max-w-2xl mx-auto text-xs sm:text-sm md:text-base hidden sm:block">
+                    İhtiyacınıza uygun, modern ve ferah yaşam alanları.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 xs:gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+                <!-- Room 1 - 4 Kişilik -->
+                <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=400&h=300&fit=crop" 
+                             alt="4 Kişilik Oda" class="w-full h-40 sm:h-52 lg:h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-3 sm:p-4 lg:p-6">
+                        <h3 class="text-base sm:text-xl lg:text-2xl font-bold text-gray-800 mb-1 sm:mb-2">4 Kişilik Oda</h3>
+                        <p class="text-gray-500 mb-2 sm:mb-4 text-xs sm:text-sm line-clamp-2">Arkadaşlarınızla birlikte kalabileceğiniz ferah seçenek.</p>
+                        <div class="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-6">
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-bed"></i> 4 Yatak
+                            </span>
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-bath"></i> Banyo
+                            </span>
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-wind"></i> Klima
+                            </span>
+                        </div>
+                        <button onclick="openRoomModal('4-kisilik')" class="block w-full text-center bg-gray-900 text-white py-2 sm:py-3 rounded-lg sm:rounded-xl font-semibold hover:bg-primary transition-colors group-hover:bg-primary text-xs sm:text-sm lg:text-base">
+                            <i class="fas fa-door-open mr-1 sm:mr-2"></i>Odaları Gör
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Room 2 - 2 Kişilik -->
+                <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=400&h=300&fit=crop" 
+                             alt="2 Kişilik Oda" class="w-full h-40 sm:h-52 lg:h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-3 sm:p-4 lg:p-6">
+                        <h3 class="text-base sm:text-xl lg:text-2xl font-bold text-gray-800 mb-1 sm:mb-2">2 Kişilik Oda</h3>
+                        <p class="text-gray-500 mb-2 sm:mb-4 text-xs sm:text-sm line-clamp-2">Konforlu ve dengeli ideal yaşam alanı.</p>
+                        <div class="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-6">
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-bed"></i> 2 Yatak
+                            </span>
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-bath"></i> Özel Banyo
+                            </span>
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-wind"></i> Klima
+                            </span>
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-tv"></i> TV
+                            </span>
+                        </div>
+                        <button onclick="openRoomModal('2-kisilik')" class="block w-full text-center bg-gray-900 text-white py-2 sm:py-3 rounded-lg sm:rounded-xl font-semibold hover:bg-primary transition-colors group-hover:bg-primary text-xs sm:text-sm lg:text-base">
+                            <i class="fas fa-door-open mr-1 sm:mr-2"></i>Odaları Gör
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Room 3 - Tek Kişilik -->
+                <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=300&fit=crop" 
+                             alt="Tek Kişilik Oda" class="w-full h-40 sm:h-52 lg:h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-3 sm:p-4 lg:p-6">
+                        <h3 class="text-base sm:text-xl lg:text-2xl font-bold text-gray-800 mb-1 sm:mb-2">Tek Kişilik Oda</h3>
+                        <p class="text-gray-500 mb-2 sm:mb-4 text-xs sm:text-sm line-clamp-2">Maksimum konfor ve özel alan isteyenler için.</p>
+                        <div class="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-6">
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-bed"></i> 1 Yatak
+                            </span>
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-bath"></i> Özel Banyo
+                            </span>
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-wind"></i> Klima
+                            </span>
+                            <span class="bg-gray-100 text-gray-600 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium flex items-center gap-1">
+                                <i class="fas fa-couch"></i> Mini Salon
+                            </span>
+                        </div>
+                        <button onclick="openRoomModal('tek-kisilik')" class="block w-full text-center bg-gray-900 text-white py-2 sm:py-3 rounded-lg sm:rounded-xl font-semibold hover:bg-primary transition-colors group-hover:bg-primary text-xs sm:text-sm lg:text-base">
+                            <i class="fas fa-door-open mr-1 sm:mr-2"></i>Odaları Gör
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Room Detail Modal -->
+    <div id="roomModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/90" onclick="closeRoomModal()"></div>
+        <div class="relative h-full flex flex-col">
+            <div class="bg-white w-full h-full overflow-hidden flex flex-col">
+                <!-- Modal Header -->
+                <div class="bg-gradient-to-r from-primary to-purple-600 px-3 py-1.5 lg:px-4 lg:py-2.5 text-white flex items-center justify-between">
+                    <div class="flex items-center gap-2 lg:gap-3 min-w-0">
+                        <h3 id="modalTitle" class="text-sm lg:text-lg font-bold truncate">Oda Listesi</h3>
+                        <span class="text-white/60 hidden sm:inline">•</span>
+                        <p id="modalSubtitle" class="text-white/70 text-xs lg:text-sm hidden sm:block truncate">Mevcut odalarımızı inceleyin</p>
+                    </div>
+                    <button onclick="closeRoomModal()" class="w-7 h-7 lg:w-8 lg:h-8 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors flex-shrink-0">
+                        <i class="fas fa-times text-xs lg:text-sm"></i>
+                    </button>
+                </div>
+                
+                <!-- Modal Content -->
+                <div class="flex-1 overflow-hidden flex flex-col lg:flex-row">
+                    <!-- Room List (Top on Mobile, Left on Desktop) -->
+                    <div class="lg:w-1/4 xl:w-1/5 border-b lg:border-b-0 lg:border-r border-gray-200 bg-gray-50 flex-shrink-0">
+                        <div class="p-2 lg:p-3 lg:block">
+                            <div class="hidden lg:block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">Odalar</div>
+                            <!-- Mobile: Horizontal scroll, Desktop: Vertical list -->
+                            <div id="roomList" class="flex lg:flex-col gap-2 lg:gap-1.5 overflow-x-auto lg:overflow-x-visible lg:overflow-y-auto pb-2 lg:pb-0 snap-x snap-mandatory lg:snap-none">
+                                <!-- Odalar buraya JavaScript ile eklenecek -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Room Detail (Right Side) -->
+                    <div class="flex-1 lg:w-3/4 xl:w-4/5 overflow-y-auto p-4 lg:p-8">
+                        <div id="roomDetail" class="h-full transition-all duration-300 ease-out">
+                            <div class="flex items-center justify-center h-full text-gray-400">
+                                <div class="text-center">
+                                    <i class="fas fa-hand-pointer text-4xl mb-3"></i>
+                                    <p>Detayları görmek için bir oda seçin</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="galeri" class="py-16 md:py-24 bg-gradient-to-b from-gray-50 via-white to-purple-50/30 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-10 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-pink-200/20 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-12 md:mb-16">
+                <div class="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
+                    <i class="fas fa-images text-primary text-sm"></i>
+                    <span class="text-primary font-semibold text-sm uppercase tracking-wider">Galeri</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
+                    Yurdumuzdan <span class="gradient-text">Kareler</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">
+                    Yaşam alanlarımızı keşfedin, öğrencilerimizin ikinci evini görün
+                </p>
+            </div>
+            
+            <!-- Gallery Grid - Masonry Style -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 auto-rows-[180px] md:auto-rows-[200px]" id="gallery-grid">
+                <!-- Large Featured Image -->
+                <div class="col-span-2 row-span-2 group relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl cursor-pointer gallery-item" data-index="0">
+                    <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&h=600&fit=crop" 
+                         alt="Yurt Odası" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                        <span class="inline-block bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">Odalar</span>
+                        <h3 class="text-white font-bold text-lg md:text-xl">Konforlu Yaşam Alanları</h3>
+                        <p class="text-white/70 text-sm hidden md:block">Modern ve ferah odalarımız</p>
+                    </div>
+                    <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-expand text-white"></i>
+                    </div>
+                </div>
+                
+                <!-- Small Images with Hover Effects -->
+                <div class="group relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg cursor-pointer gallery-item" data-index="4">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop" 
+                         alt="Yemekhane" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-3 left-3 right-3 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all">
+                        <span class="text-white font-semibold text-sm">Yemekhane</span>
+                    </div>
+                    <div class="absolute top-2 right-2 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-search-plus text-white text-xs"></i>
+                    </div>
+                </div>
+                
+                <div class="group relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg cursor-pointer gallery-item" data-index="7">
+                    <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?w=400&h=300&fit=crop" 
+                         alt="Oturma Salonu" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-3 left-3 right-3 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all">
+                        <span class="text-white font-semibold text-sm">Oturma Salonu</span>
+                    </div>
+                    <div class="absolute top-2 right-2 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-search-plus text-white text-xs"></i>
+                    </div>
+                </div>
+                
+                <div class="group relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg cursor-pointer gallery-item" data-index="8">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" 
+                         alt="TV Odası" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-3 left-3 right-3 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all">
+                        <span class="text-white font-semibold text-sm">TV Odası</span>
+                    </div>
+                    <div class="absolute top-2 right-2 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-search-plus text-white text-xs"></i>
+                    </div>
+                </div>
+                
+                <div class="group relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg cursor-pointer gallery-item" data-index="15">
+                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=400&h=300&fit=crop" 
+                         alt="Dış Görünüm" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-3 left-3 right-3 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all">
+                        <span class="text-white font-semibold text-sm">Dış Görünüm</span>
+                    </div>
+                    <div class="absolute top-2 right-2 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="fas fa-search-plus text-white text-xs"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- View All Button -->
+            <div class="text-center mt-10 md:mt-14">
+                <button id="open-gallery-btn" class="group inline-flex items-center gap-3 bg-white border-2 border-gray-200 hover:border-primary px-8 py-4 rounded-full font-semibold text-gray-700 hover:text-primary transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/10">
+                    <span>Tüm Galeriyi Görüntüle</span>
+                    <div class="w-8 h-8 bg-primary/10 group-hover:bg-primary rounded-full flex items-center justify-center transition-all">
+                        <i class="fas fa-arrow-right text-primary group-hover:text-white text-sm transition-colors"></i>
+                    </div>
+                </button>
+                <p class="text-gray-400 text-sm mt-3">20+ fotoğraf ile yurdumuzu keşfedin</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-primary font-semibold text-sm uppercase tracking-wider">Yorumlar</span>
+                <h2 class="text-4xl font-bold text-gray-800 mt-3">
+                    Öğrencilerimiz <span class="gradient-text">Ne Diyor?</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white border border-gray-200 p-8 rounded-3xl shadow-sm">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">
+                        "3 yıldır bu yurtta kalıyorum. Hem güvenlik hem de temizlik konusunda çok memnunum. 
+                        Personel her zaman ilgili ve yardımsever."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                            EK
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Elif Kaya</p>
+                            <p class="text-sm text-gray-600">Tıp Fakültesi - 3. Sınıf</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white border border-gray-200 p-8 rounded-3xl shadow-sm">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">
+                        "Ailemden uzakta olduğum için endişeliydim ama burada kendimi evimde gibi hissediyorum. 
+                        Yemekler çok lezzetli ve etüt odaları harika."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                            AY
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Ayşe Yılmaz</p>
+                            <p class="text-sm text-gray-600">Mühendislik - 2. Sınıf</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white border border-gray-200 p-8 rounded-3xl shadow-sm">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">
+                        "Üniversiteye servis hizmeti hayat kurtarıcı. Odalar temiz ve konforlu. 
+                        İnternet hızı da çok iyi, online derslerimde hiç sorun yaşamadım."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                            ZD
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800">Zeynep Demir</p>
+                            <p class="text-sm text-gray-600">İşletme - 1. Sınıf</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary via-purple-600 to-pink-500 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-4xl font-bold text-white mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                Yerinizi Ayırtın!
+            </h2>
+            <p class="text-white text-lg mb-8 max-w-2xl mx-auto" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.3);">
+                2024-2025 akademik yılı için kayıtlarımız devam ediyor. 
+                Sınırlı kontenjanımız dolmadan yerinizi garantiye alın.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#iletisim" class="bg-white text-primary px-10 py-4 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg">
+                    <i class="fas fa-phone mr-2"></i>Hemen Ara: 0312 123 45 67
+                </a>
+                <a href="https://wa.me/905551234567" class="bg-green-500 text-white px-10 py-4 rounded-full font-semibold hover:bg-green-600 transition shadow-lg">
+                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="iletisim" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-primary font-semibold text-sm uppercase tracking-wider">İletişim</span>
+                <h2 class="text-4xl font-bold text-gray-800 mt-3">
+                    Bizimle <span class="gradient-text">İletişime Geçin</span>
+                </h2>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white border border-gray-200 p-8 rounded-3xl shadow-sm mb-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">İletişim Bilgileri</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Adres</p>
+                                    <p class="text-gray-700">Üniversite Mah. Öğrenci Cad. No:15 Merkez/Ankara</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-phone text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Telefon</p>
+                                    <p class="text-gray-700">0312 123 45 67 - 0555 123 45 67</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-envelope text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">E-posta</p>
+                                    <p class="text-gray-700">info@gunesyurdu.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-clock text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Çalışma Saatleri</p>
+                                    <p class="text-gray-700">Pazartesi - Cumartesi: 09:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white hover:bg-blue-700 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center text-white hover:bg-blue-700 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-red-600 rounded-xl flex items-center justify-center text-white hover:bg-red-700 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-blue-400 rounded-xl flex items-center justify-center text-white hover:bg-primary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <form class="bg-white border border-gray-200 p-8 rounded-3xl shadow-sm">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Başvuru Formu</h3>
+                        <div class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Ad Soyad</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 focus:border-primary text-gray-800 focus:ring-2 focus:ring-violet-100 outline-none transition" placeholder="Adınız Soyadınız">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Telefon</label>
+                                    <input type="tel" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 focus:border-primary text-gray-800 focus:ring-2 focus:ring-violet-100 outline-none transition" placeholder="05XX XXX XX XX">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">E-posta</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 focus:border-primary text-gray-800 focus:ring-2 focus:ring-violet-100 outline-none transition" placeholder="email@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Oda Tercihi</label>
+                                <select class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 focus:border-primary text-gray-800 focus:ring-2 focus:ring-violet-100 outline-none transition">
+                                    <option>Oda tipi seçin...</option>
+                                    <option>4 Kişilik Oda - ₺4.500/ay</option>
+                                    <option>2 Kişilik Oda - ₺6.500/ay</option>
+                                    <option>Tek Kişilik Oda - ₺9.000/ay</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Mesajınız</label>
+                                <textarea rows="4" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-300 focus:border-primary text-gray-800 focus:ring-2 focus:ring-violet-100 outline-none transition resize-none" placeholder="Sormak istediğiniz sorular..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-violet-400 text-gray-900 py-4 rounded-xl font-semibold hover:bg-violet-500 transition">
+                                <i class="fas fa-paper-plane mr-2"></i>Başvuru Gönder
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="h-96 bg-gray-200">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.123456789!2d32.8597!3d39.9334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDU2JzAwLjQiTiAzMsKwNTEnMzQuOSJF!5e0!3m2!1str!2str!4v1234567890" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
+                            <i class="fas fa-sun text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Güneş Yurdu</h3>
+                            <p class="text-xs text-slate-400">Kız Öğrenci Yurdu</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        15 yılı aşkın tecrübemizle, öğrencilerimize güvenli ve konforlu bir yaşam alanı sunuyoruz.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-white text-primary rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-primary rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-primary rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-primary rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Hızlı Linkler</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#anasayfa" class="text-gray-400 hover:text-white transition">Ana Sayfa</a></li>
+                        <li><a href="#hakkimizda" class="text-gray-400 hover:text-white transition">Hakkımızda</a></li>
+                        <li><a href="#odalar" class="text-gray-400 hover:text-white transition">Odalar</a></li>
+                        <li><a href="#galeri" class="text-gray-400 hover:text-white transition">Galeri</a></li>
+                        <li><a href="#iletisim" class="text-gray-400 hover:text-white transition">İletişim</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Hizmetlerimiz</h4>
+                    <ul class="space-y-3">
+                        <li><span class="text-gray-400">7/24 Güvenlik</span></li>
+                        <li><span class="text-gray-400">3 Öğün Yemek</span></li>
+                        <li><span class="text-gray-400">Fiber İnternet</span></li>
+                        <li><span class="text-gray-400">Servis Hizmeti</span></li>
+                        <li><span class="text-gray-400">Çamaşırhane</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">İletişim</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-4 text-gray-400">
+                            <i class="fas fa-phone text-primary"></i>
+                            0312 123 45 67
+                        </li>
+                        <li class="flex items-center gap-4 text-gray-400">
+                            <i class="fas fa-envelope text-primary"></i>
+                            info@gunesyurdu.com
+                        </li>
+                        <li class="flex items-start gap-4 text-gray-400">
+                            <i class="fas fa-map-marker-alt text-primary mt-1"></i>
+                            Üniversite Mah. Öğrenci Cad. No:15 Merkez/Ankara
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-500">
+                    &copy; 2024 Güneş Kız Öğrenci Yurdu. Tüm hakları saklıdır.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#anasayfa" class="fixed bottom-8 right-24 w-14 h-14 gradient-bg rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/30 hover:scale-110 hover:shadow-xl transition-all duration-300 group opacity-0 translate-y-10 z-40" id="back-to-top">
+        <i class="fas fa-arrow-up group-hover:-translate-y-1 transition-transform"></i>
+    </a>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/903121234567" target="_blank" class="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] rounded-2xl flex items-center justify-center text-white shadow-lg shadow-green-500/30 hover:scale-110 hover:shadow-xl transition-all duration-300 z-50 group">
+        <i class="fab fa-whatsapp text-3xl group-hover:rotate-12 transition-transform"></i>
+    </a>
+
+
+    <!-- Scroll Effect -->
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navbarWrapper = document.getElementById('navbar-wrapper');
+        const navbarInner = document.getElementById('navbar-inner');
+        const backToTop = document.getElementById('back-to-top');
+        const scrollBadge = document.getElementById('scroll-badge');
+        
+        // Scroll effect - Yukarıya yapışma + incelme (yumuşak animasyonlu)
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Scrolled - yukarıya yapış ve incel
+                navbarWrapper.style.padding = '0';
+                navbar.classList.add('rounded-none', 'max-w-full', 'shadow-md');
+                navbar.classList.remove('rounded-2xl', 'max-w-6xl', 'shadow-lg', 'border');
+                navbarInner.style.padding = '8px 16px';
+                
+                // Show badge
+                scrollBadge.classList.remove('hidden', 'opacity-0', 'scale-90');
+                scrollBadge.classList.add('md:flex', 'opacity-100', 'scale-100');
+                
+                backToTop.classList.remove('opacity-0', 'translate-y-10');
+            } else {
+                // Top - normal floating
+                navbarWrapper.style.padding = '';
+                navbar.classList.remove('rounded-none', 'max-w-full', 'shadow-md');
+                navbar.classList.add('rounded-2xl', 'max-w-6xl', 'shadow-lg', 'border');
+                navbarInner.style.padding = '';
+                
+                // Hide badge
+                scrollBadge.classList.add('hidden', 'opacity-0', 'scale-90');
+                scrollBadge.classList.remove('md:flex', 'opacity-100', 'scale-100');
+                
+                backToTop.classList.add('opacity-0', 'translate-y-10');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Toggle icon
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        // Smooth scroll & close mobile menu
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu after click
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Hero Slider
+        const heroSlider = document.getElementById('hero-slider');
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        const sliderTitle = document.getElementById('slider-title');
+        const slideTitles = ['Yurt Odası', 'Ortak Alan', 'Çalışma Alanı'];
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        function goToSlide(index) {
+            currentSlide = index;
+            if (heroSlider) heroSlider.style.transform = `translateX(-${index * 100}%)`;
+            if (sliderTitle) sliderTitle.textContent = slideTitles[index];
+            sliderDots.forEach((dot, i) => {
+                dot.classList.toggle('bg-white', i === index);
+                dot.classList.toggle('bg-white/50', i !== index);
+            });
+        }
+
+        // Auto slide
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }, 3000);
+
+        // Click dots
+        sliderDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                goToSlide(parseInt(dot.dataset.slide));
+            });
+        });
+
+        // Touch swipe
+        let touchStartX = 0;
+        heroSlider?.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+        heroSlider?.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) currentSlide = Math.min(currentSlide + 1, totalSlides - 1);
+                else currentSlide = Math.max(currentSlide - 1, 0);
+                goToSlide(currentSlide);
+            }
+        });
+
+        // Active link highlight
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (scrollY >= section.offsetTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('bg-primary', 'text-white');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('bg-primary', 'text-white');
+                }
+            });
+        });
+
+
+
+        // Gallery System (Rebuilt)
+        (() => {
+            const gallerySection = document.getElementById('galeri');
+            if (!gallerySection) return;
+
+            const pageThumbs = Array.from(gallerySection.querySelectorAll('img'));
+            if (pageThumbs.length === 0) return;
+
+            const allGalleryImages = [
+                { src: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1200&h=800&fit=crop', category: 'odalar', title: '2 Kişilik Oda', group: '2 Kişilik Odalar' },
+                { src: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1200&h=800&fit=crop', category: 'odalar', title: '2 Kişilik Oda', group: '2 Kişilik Odalar' },
+                { src: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=800&fit=crop', category: 'odalar', title: '3 Kişilik Oda', group: '3 Kişilik Odalar' },
+                { src: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&h=800&fit=crop', category: 'odalar', title: '3 Kişilik Oda', group: '3 Kişilik Odalar' },
+                { src: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&h=800&fit=crop', category: 'odalar', title: '3 Kişilik Oda', group: '3 Kişilik Odalar' },
+                { src: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=800&fit=crop', category: 'yemekhane', title: 'Yemekhane' },
+                { src: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=1200&h=800&fit=crop', category: 'yemekhane', title: 'Yemek Servisi' },
+                { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop', category: 'yemekhane', title: 'Kahvaltı' },
+                { src: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1200&h=800&fit=crop', category: 'ortak', title: 'Oturma Salonu' },
+                { src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=800&fit=crop', category: 'ortak', title: 'TV Odası' },
+                { src: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&h=800&fit=crop', category: 'ortak', title: 'Dinlenme Alanı' },
+                { src: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1200&h=800&fit=crop', category: 'ortak', title: 'Lobi' },
+                { src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop', category: 'etut', title: 'Etüt Odası 1' },
+                { src: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&h=800&fit=crop', category: 'etut', title: 'Etüt Odası 2' },
+                { src: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1200&h=800&fit=crop', category: 'etut', title: 'Çalışma Masaları' },
+                { src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&h=800&fit=crop', category: 'etut', title: 'Kütüphane' },
+                { src: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=1200&h=800&fit=crop', category: 'dis', title: 'Bina Dış Görünüm' },
+                { src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop', category: 'dis', title: 'Ana Giriş' },
+                { src: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=800&fit=crop', category: 'dis', title: 'Bahçe' },
+                { src: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1200&h=800&fit=crop', category: 'dis', title: 'Otopark' },
+                { src: 'https://images.unsplash.com/photo-1464146072230-91cabc968266?w=1200&h=800&fit=crop', category: 'dis', title: 'Gece Görünümü' }
+            ];
+
+            const categoryNames = {
+                all: 'Tümü',
+                odalar: 'Odalar',
+                yemekhane: 'Yemekhane',
+                ortak: 'Ortak Alanlar',
+                etut: 'Etüt Odaları',
+                dis: 'Dış Mekan'
+            };
+
+            const categories = ['all', 'odalar', 'yemekhane', 'ortak', 'etut', 'dis'];
+
+            injectGalleryStyles();
+            const modal = injectGalleryModal();
+
+            const els = {
+                modal,
+                sidebar: modal.querySelector('[data-gx="sidebar"]'),
+                btnClose: modal.querySelector('[data-gx="close"]'),
+                btnCloseMobile: modal.querySelector('[data-gx="close-mobile"]'),
+                btnBack: modal.querySelector('[data-gx="back"]'),
+                categoryName: modal.querySelector('[data-gx="category-name"]'),
+                viewInfo: modal.querySelector('[data-gx="view-info"]'),
+                gridView: modal.querySelector('[data-gx="grid-view"]'),
+                gridContainer: modal.querySelector('[data-gx="grid-container"]'),
+                focusView: modal.querySelector('[data-gx="focus-view"]'),
+                focusImg: modal.querySelector('[data-gx="focus-img"]'),
+                thumbStrip: modal.querySelector('[data-gx="thumb-strip"]'),
+                btnPrev: modal.querySelector('[data-gx="prev"]'),
+                btnNext: modal.querySelector('[data-gx="next"]')
+            };
+
+            let currentFilter = 'all';
+            let currentSubFilter = null;
+            let currentView = 'grid';
+            let filteredImages = [...allGalleryImages];
+            let displayImages = [...allGalleryImages];
+            let currentIndex = 0;
+            let isOpen = false;
+
+            const pageKeyToIndex = new Map();
+            allGalleryImages.forEach((img, idx) => {
+                pageKeyToIndex.set(toKey(img.src), idx);
+            });
+
+            updateCategoryCounts();
+            renderSidebar();
+
+            pageThumbs.forEach((imgEl) => {
+                imgEl.style.cursor = 'pointer';
+                imgEl.addEventListener('click', () => {
+                    openGalleryModal(); // Her zaman grid görünümüyle aç
+                });
+            });
+
+            // "Tüm Galeriyi Görüntüle" butonu
+            const openGalleryBtn = document.getElementById('open-gallery-btn');
+            if (openGalleryBtn) {
+                openGalleryBtn.addEventListener('click', () => openGalleryModal());
+            }
+
+            // Galeri grid'deki resimlere tıklama
+            const galleryGrid = document.getElementById('gallery-grid');
+            if (galleryGrid) {
+                galleryGrid.addEventListener('click', (e) => {
+                    const item = e.target.closest('.gallery-item');
+                    if (item) {
+                        openGalleryModal(); // Her zaman grid görünümüyle aç
+                    }
+                });
+            }
+
+            // Global fonksiyon olarak dışa aktar
+            window.openGalleryModal = openGalleryModal;
+
+            if (els.btnClose) els.btnClose.addEventListener('click', closeGalleryModal);
+            if (els.btnCloseMobile) els.btnCloseMobile.addEventListener('click', closeGalleryModal);
+            els.btnPrev.addEventListener('click', prevImage);
+            els.btnNext.addEventListener('click', nextImage);
+
+            document.addEventListener('keydown', (e) => {
+                if (!isOpen) return;
+                if (e.key === 'Escape') {
+                    if (currentView === 'focus') switchView('grid');
+                    else closeGalleryModal();
+                }
+                if (currentView === 'focus' && e.key === 'ArrowRight') nextImage();
+                if (currentView === 'focus' && e.key === 'ArrowLeft') prevImage();
+            });
+
+            function openGalleryModal(index) {
+                isOpen = true;
+                currentFilter = 'all';
+                currentSubFilter = null;
+                filteredImages = [...allGalleryImages];
+                currentIndex = 0;
+                document.body.style.overflow = 'hidden';
+                els.modal.classList.remove('hidden');
+                renderSidebar();
+                setCategoryName('all');
+                renderGrid();
+
+                if (typeof index === 'number') {
+                    // Map global index to filtered index (currently same in 'all')
+                    currentIndex = clamp(index, 0, filteredImages.length - 1);
+                    openFocusMode(currentIndex);
+                } else {
+                    switchView('grid');
+                }
+
+                // Show category hint logic
+                const hintEl = document.getElementById('gx-cat-hint');
+                const dismissedTime = localStorage.getItem('gx-hint-dismissed-time');
+                const oneDay = 24 * 60 * 60 * 1000;
+                const now = Date.now();
+
+                if (hintEl && (!dismissedTime || (now - parseInt(dismissedTime)) > oneDay)) {
+                    hintEl.classList.remove('hidden');
+                    
+                    // Close button (X) - Sadece kapatır
+                    const closeBtn = hintEl.querySelector('.gx-tooltip__close');
+                    if (closeBtn) {
+                        closeBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            hintEl.classList.add('hidden');
+                        }, { once: true });
+                    }
+
+                    // Dismiss button - 1 gün boyunca gizler
+                    const dismissBtn = document.getElementById('gx-hint-dismiss');
+                    if (dismissBtn) {
+                        dismissBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            hintEl.classList.add('hidden');
+                            localStorage.setItem('gx-hint-dismissed-time', Date.now().toString());
+                        }, { once: true });
+                    }
+                }
+            }
+
+            function closeGalleryModal() {
+                if (currentView === 'focus') {
+                    switchView('grid');
+                    return;
+                }
+                isOpen = false;
+                els.modal.classList.add('hidden');
+                els.modal.classList.remove('gx-is-focus');
+                document.body.style.overflow = '';
+            }
+
+            function switchView(view) {
+                currentView = view;
+                if (view === 'grid') {
+                    els.gridView.classList.remove('hidden');
+                    els.focusView.classList.add('hidden');
+                    els.modal.classList.remove('gx-is-focus');
+                    els.viewInfo.textContent = `${displayImages.length} Fotoğraf`;
+                } else {
+                    els.gridView.classList.add('hidden');
+                    els.focusView.classList.remove('hidden');
+                    els.focusView.classList.add('flex');
+                    els.modal.classList.add('gx-is-focus');
+                    updateFocusCounter();
+                }
+            }
+
+            function filterGallery(category) {
+                currentFilter = category;
+                currentSubFilter = null;
+                if (category === 'all') filteredImages = [...allGalleryImages];
+                else filteredImages = allGalleryImages.filter(img => img.category === category);
+
+                currentIndex = 0;
+                renderSidebar();
+                setCategoryName(category);
+                renderGrid();
+                switchView('grid');
+            }
+
+            function openFocusMode(index) {
+                currentIndex = clamp(index, 0, displayImages.length - 1);
+                updateModalImage();
+                generateThumbnails();
+                switchView('focus');
+            }
+
+            function updateFocusCounter() {
+                els.viewInfo.innerHTML = `<span class="text-white font-bold">${currentIndex + 1}</span><span class="text-gray-500 mx-1">/</span><span>${displayImages.length}</span>`;
+            }
+
+            function updateModalImage() {
+                if (displayImages.length === 0) return;
+                const img = displayImages[currentIndex];
+                els.focusImg.style.opacity = '0';
+                const src = img.src;
+                setTimeout(() => {
+                    els.focusImg.src = src;
+                    els.focusImg.alt = img.title;
+                    els.focusImg.onload = () => {
+                        els.focusImg.style.opacity = '1';
+                    };
+                }, 120);
+                updateFocusCounter();
+                highlightActiveThumb();
+            }
+
+            function generateThumbnails() {
+                els.thumbStrip.innerHTML = displayImages
+                    .map((img, i) => {
+                        const t = img.src.replace('w=1200', 'w=100').replace('h=800', 'h=70');
+                        const active = i === currentIndex;
+                        return `
+                            <img src="${escapeAttr(t)}" alt="${escapeAttr(img.title)}" title="${escapeAttr(img.title)}"
+                                 class="gx-thumb ${active ? 'gx-thumb--active' : ''}" data-gx-go="${i}">
+                        `;
+                    })
+                    .join('');
+            }
+
+            function highlightActiveThumb() {
+                const thumbs = els.thumbStrip.querySelectorAll('[data-gx-go]');
+                thumbs.forEach((t) => {
+                    const idx = Number(t.getAttribute('data-gx-go'));
+                    t.classList.toggle('gx-thumb--active', idx === currentIndex);
+                });
+            }
+
+            els.thumbStrip.addEventListener('click', (e) => {
+                const target = e.target;
+                if (!(target instanceof Element)) return;
+                const el = target.closest('[data-gx-go]');
+                if (!el) return;
+                const idx = Number(el.getAttribute('data-gx-go'));
+                if (!Number.isNaN(idx)) {
+                    currentIndex = idx;
+                    updateModalImage();
+                }
+            });
+
+            function nextImage() {
+                if (displayImages.length === 0) return;
+                currentIndex = (currentIndex + 1) % displayImages.length;
+                updateModalImage();
+            }
+
+            function prevImage() {
+                if (displayImages.length === 0) return;
+                currentIndex = (currentIndex - 1 + displayImages.length) % displayImages.length;
+                updateModalImage();
+            }
+
+            function renderGrid() {
+                // Odalar için subfilter varsa filtrele
+                if (currentFilter === 'odalar' && currentSubFilter) {
+                    displayImages = filteredImages.filter(img => img.group === currentSubFilter);
+                } else {
+                    displayImages = [...filteredImages];
+                }
+
+                if (displayImages.length === 0) {
+                    els.gridContainer.className = 'gx-grid';
+                    els.gridContainer.innerHTML = `
+                        <div class="gx-empty">
+                            <i class="fas fa-camera gx-empty__icon"></i>
+                            <p>Bu kategoride fotoğraf bulunmuyor.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Odalar kategorisinde oda tipi kartları göster
+                if (currentFilter === 'odalar' && !currentSubFilter) {
+                    els.gridContainer.className = 'gx-grid gx-room-cards';
+                    const groups = {};
+                    displayImages.forEach((img) => {
+                        const g = img.group || 'Diğer';
+                        if (!groups[g]) groups[g] = [];
+                        groups[g].push(img);
+                    });
+
+                    els.gridContainer.innerHTML = Object.keys(groups).map(groupName => {
+                        const groupItems = groups[groupName];
+                        const coverImg = groupItems[0].src.replace('w=1200', 'w=400').replace('h=800', 'h=300');
+                        const count = groupItems.length;
+                        return `
+                            <button type="button" class="gx-card gx-room-card" data-gx-room="${escapeAttr(groupName)}">
+                                <img src="${escapeAttr(coverImg)}" alt="${escapeAttr(groupName)}" class="gx-card__img">
+                                <div class="gx-card__overlay">
+                                    <div class="text-center">
+                                        <i class="fas fa-folder-open text-3xl mb-2"></i>
+                                        <p class="font-bold">${count} Fotoğraf</p>
+                                    </div>
+                                </div>
+                                <div class="gx-card__title">${escapeHtml(groupName)}</div>
+                            </button>
+                        `;
+                    }).join('');
+                } else {
+                    els.gridContainer.className = 'gx-grid';
+                    
+                    const imagesHtml = displayImages
+                        .map((img, i) => createCardHtml(img, i))
+                        .join('');
+                        
+                    els.gridContainer.innerHTML = imagesHtml;
+                }
+            }
+
+            function createCardHtml(img, i) {
+                const t = img.src.replace('w=1200', 'w=400').replace('h=800', 'h=300');
+                return `
+                    <button type="button" class="gx-card" data-gx-open="${i}" aria-label="${escapeAttr(img.title)}">
+                        <img src="${escapeAttr(t)}" alt="${escapeAttr(img.title)}" class="gx-card__img" loading="lazy">
+                        <div class="gx-card__overlay"><i class="fas fa-search-plus"></i></div>
+                        <div class="gx-card__title">${escapeHtml(img.title)}</div>
+                    </button>
+                `;
+            }
+
+            els.gridContainer.addEventListener('click', (e) => {
+                const target = e.target;
+                if (!(target instanceof Element)) return;
+                
+                // Geri dön butonu
+                const backBtn = target.closest('[data-gx-back-to-rooms]');
+                if (backBtn) {
+                    currentSubFilter = null;
+                    currentIndex = 0;
+                    renderGrid();
+                    renderSidebar();
+                    return;
+                }
+
+                // Oda kartına tıklama
+                const roomCard = target.closest('[data-gx-room]');
+                if (roomCard) {
+                    const roomName = roomCard.getAttribute('data-gx-room');
+                    currentSubFilter = roomName;
+                    currentIndex = 0;
+                    renderGrid(); // displayImages'ı günceller
+                    renderSidebar(); // Sidebar aktifliğini günceller
+                    openFocusMode(0); // Doğrudan focus modunu aç
+                    return;
+                }
+                
+                const btn = target.closest('[data-gx-open]');
+                if (!btn) return;
+                const idx = Number(btn.getAttribute('data-gx-open'));
+                if (!Number.isNaN(idx)) openFocusMode(idx);
+            });
+
+            function updateCategoryCounts() {
+                const counts = new Map();
+                counts.set('all', allGalleryImages.length);
+                categories.forEach((cat) => {
+                    if (cat === 'all') return;
+                    counts.set(cat, allGalleryImages.filter(img => img.category === cat).length);
+                });
+
+                categories.forEach((cat) => {
+                    const el = modal.querySelector(`[data-gx-count="${cat}"]`);
+                    if (el) el.textContent = String(counts.get(cat) ?? 0);
+                });
+            }
+
+            function renderSidebar() {
+                // Mobilde herhangi bir kategori seçiliyse (all hariç) geri butonu göster
+                if (currentFilter !== 'all' && window.innerWidth < 768) {
+                    const categoryImages = allGalleryImages.filter(img => img.category === currentFilter);
+                    const icon = getIcon(currentFilter);
+                    const categoryName = categoryNames[currentFilter] || currentFilter;
+                    
+                    // Geri butonu
+                    let html = `
+                        <button type="button" class="gx-filter gx-filter--back" data-gx-back="true" style="flex-shrink:0">
+                            <span class="gx-filter__icon"><i class="fas fa-arrow-left"></i></span>
+                            <span class="gx-filter__text">Geri</span>
+                        </button>
+                    `;
+                    
+                    // Odalar kategorisi için alt kategoriler (başlık yok, direkt alt kategoriler)
+                    if (currentFilter === 'odalar') {
+                        const subGroups = [...new Set(categoryImages.map(img => img.group).filter(g => g))];
+                        
+                        // Tümü seçeneği
+                        const allActive = !currentSubFilter ? 'gx-filter--active' : '';
+                        html += `
+                            <button type="button" class="gx-filter ${allActive}" data-gx-subfilter="Tümü" style="flex-shrink:0">
+                                <span class="gx-filter__icon"><i class="fas fa-th-large"></i></span>
+                                <span class="gx-filter__text">Tümü</span>
+                                <span class="gx-filter__count">${categoryImages.length}</span>
+                            </button>
+                        `;
+                        
+                        // Alt kategoriler
+                        html += subGroups.map(sub => {
+                            const isSubActive = currentSubFilter === sub ? 'gx-filter--active' : '';
+                            const subCount = categoryImages.filter(img => img.group === sub).length;
+                            return `
+                                <button type="button" class="gx-filter ${isSubActive}" data-gx-subfilter="${sub}" style="flex-shrink:0">
+                                    <span class="gx-filter__icon"><i class="fas fa-bed"></i></span>
+                                    <span class="gx-filter__text">${escapeHtml(sub)}</span>
+                                    <span class="gx-filter__count">${subCount}</span>
+                                </button>
+                            `;
+                        }).join('');
+                    } else {
+                        // Diğer kategoriler için sadece başlık göster
+                        html += `
+                            <button type="button" class="gx-filter gx-filter--active" style="flex-shrink:0;pointer-events:none">
+                                <span class="gx-filter__icon"><i class="fas ${icon}"></i></span>
+                                <span class="gx-filter__text">${escapeHtml(categoryName)}</span>
+                                <span class="gx-filter__count">${categoryImages.length}</span>
+                            </button>
+                        `;
+                    }
+                    
+                    els.sidebar.innerHTML = html;
+                    
+                    // Scroll animasyonu (sadece içerik genişse)
+                    if (els.sidebar.scrollWidth > els.sidebar.clientWidth) {
+                        let animationRunning = true;
+                        
+                        function animateScroll() {
+                            if (!animationRunning) return;
+                            const maxScroll = els.sidebar.scrollWidth - els.sidebar.clientWidth;
+                            els.sidebar.scrollTo({ left: maxScroll, behavior: 'smooth' });
+                            setTimeout(() => {
+                                if (!animationRunning) return;
+                                els.sidebar.scrollTo({ left: 0, behavior: 'smooth' });
+                            }, 1500);
+                        }
+                        
+                        function stopSwing() {
+                            animationRunning = false;
+                            els.sidebar.removeEventListener('touchstart', stopSwing);
+                            els.sidebar.removeEventListener('mousedown', stopSwing);
+                        }
+                        
+                        els.sidebar.addEventListener('touchstart', stopSwing, { passive: true });
+                        els.sidebar.addEventListener('mousedown', stopSwing);
+                        setTimeout(animateScroll, 500);
+                    }
+                    
+                    return;
+                }
+                
+                // Overlay'i temizle (varsa)
+                const existingOverlay = document.querySelector('.gx-scroll-overlay');
+                if (existingOverlay) existingOverlay.remove();
+                
+                els.sidebar.innerHTML = categories
+                    .map((cat) => {
+                        const icon = getIcon(cat);
+                        const active = (cat === currentFilter) ? 'gx-filter--active' : '';
+                        const count = cat === 'all' ? allGalleryImages.length : allGalleryImages.filter(img => img.category === cat).length;
+                        
+                        let html = `
+                            <button type="button" class="gx-filter ${active}" data-gx-filter="${cat}">
+                                <span class="gx-filter__icon"><i class="fas ${icon}"></i></span>
+                                <span class="gx-filter__text">${escapeHtml(categoryNames[cat])}</span>
+                                <span class="gx-filter__count" data-gx-count="${cat}">${count}</span>
+                            </button>
+                        `;
+
+                        // Desktop'ta alt kategorileri göster
+                        if (cat === 'odalar' && currentFilter === 'odalar' && window.innerWidth >= 768) {
+                            const odalarImages = allGalleryImages.filter(img => img.category === 'odalar');
+                            const subGroups = [...new Set(odalarImages.map(img => img.group).filter(g => g))];
+                            const subHtml = subGroups.map(sub => {
+                                const isSubActive = currentSubFilter === sub ? 'gx-subfilter--active' : '';
+                                const subCount = odalarImages.filter(img => img.group === sub).length;
+                                return `
+                                    <button type="button" class="gx-subfilter ${isSubActive}" data-gx-subfilter="${sub}">
+                                        <span class="gx-subfilter__dot"></span>
+                                        ${escapeHtml(sub)}
+                                        <span class="gx-subfilter__count">${subCount}</span>
+                                    </button>
+                                `;
+                            }).join('');
+                            html += `<div class="gx-subgroup">${subHtml}</div>`;
+                        }
+
+                        return html;
+                    })
+                    .join('');
+
+                // Sidebar events (delegation)
+                // Note: Clearing old listeners is not needed as we replace innerHTML
+                // But we need to make sure we don't attach multiple listeners to els.sidebar if this function runs multiple times
+                // Actually els.sidebar listener is attached once outside. 
+                // Wait, the previous code attached listener INSIDE renderSidebar! That was a bug (multiple listeners).
+                // Let's fix it by checking if listener is attached or attach once.
+                // For now, I will keep the structure but ensure we don't duplicate logic.
+                // The previous code had `els.sidebar.addEventListener` INSIDE `renderSidebar`.
+                // This is bad practice as it adds a new listener every time renderSidebar is called.
+                // I will move the listener OUTSIDE renderSidebar in a separate edit if possible, 
+                // but since I am editing renderSidebar, I can just remove the listener attachment from here 
+                // and assume I will add it once in the initialization phase.
+                // OR, I will replace the whole function and NOT include the listener, 
+                // and add the listener separately in the init code.
+            }
+
+            // Init Sidebar Listener once
+            if (!els.sidebar._hasListener) {
+                els.sidebar.addEventListener('click', (e) => {
+                    const target = e.target;
+                    if (!(target instanceof Element)) return;
+                    
+                    // Geri butonu (mobil) - focus view açıksa grid'e dön, değilse ana kategorilere dön
+                    const backBtn = target.closest('[data-gx-back]');
+                    if (backBtn) {
+                        // Focus view açıksa önce grid'e dön
+                        if (els.focusView && !els.focusView.classList.contains('hidden')) {
+                            switchView('grid');
+                            return;
+                        }
+                        // Değilse ana kategorilere dön
+                        currentSubFilter = null;
+                        currentFilter = 'all';
+                        renderSidebar();
+                        renderGrid();
+                        return;
+                    }
+                    
+                    // Main filter
+                    const btn = target.closest('[data-gx-filter]');
+                    if (btn) {
+                        const cat = btn.getAttribute('data-gx-filter') || 'all';
+                        filterGallery(cat);
+                        return;
+                    }
+
+                    // Sub filter
+                    const subBtn = target.closest('[data-gx-subfilter]');
+                    if (subBtn) {
+                        const sub = subBtn.getAttribute('data-gx-subfilter');
+                        currentSubFilter = sub === 'Tümü' ? null : sub;
+                        currentIndex = 0;
+                        renderGrid();
+                        renderSidebar();
+                        switchView('grid'); // Focus mode açıksa grid'e dön
+                    }
+                });
+                els.sidebar._hasListener = true;
+            }
+
+            function setActiveFilterButton(category) {
+                const btns = els.sidebar.querySelectorAll('[data-gx-filter]');
+                btns.forEach((b) => {
+                    const cat = b.getAttribute('data-gx-filter');
+                    b.classList.toggle('gx-filter--active', cat === category);
+                });
+            }
+
+            function setCategoryName(category) {
+                if (els.categoryName) els.categoryName.textContent = categoryNames[category] || 'Tümü';
+            }
+
+            function injectGalleryModal() {
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = `
+                    <div id="gx-modal" class="gx-modal hidden" role="dialog" aria-modal="true" aria-label="Galeri">
+                        <div class="gx-layout">
+                            <aside class="gx-sidebar">
+                                <div class="gx-sidebar__top">
+                                    <div>
+                                        <div class="gx-sidebar__title">Galeri</div>
+                                        <div class="gx-sidebar__subtitle">Kategorilere Göz Atın</div>
+                                    </div>
+                                    <button type="button" class="gx-icon-btn gx-icon-btn--sm" data-gx="close-mobile" aria-label="Kapat">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div class="gx-tooltip hidden" id="gx-cat-hint">
+                                    <div class="gx-tooltip__arrow"></div>
+                                    <div class="gx-tooltip__content">
+                                        <div class="gx-tooltip__header">
+                                            <i class="fas fa-paperclip text-lg animate-pulse"></i>
+                                            <span>İpucu</span>
+                                            <button type="button" class="gx-tooltip__close"><i class="fas fa-times"></i></button>
+                                        </div>
+                                        <p class="gx-tooltip__text">Kategorileri buradan seçerek filtreleyebilirsiniz.</p>
+                                        <button type="button" class="gx-tooltip__action" id="gx-hint-dismiss">
+                                            Bir daha gösterme
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="gx-sidebar__list" data-gx="sidebar"></div>
+                            </aside>
+
+                            <main class="gx-main">
+                                <div class="gx-topbar">
+                                    <div class="gx-badge">
+                                        <span class="gx-badge__info" data-gx="view-info">Yükleniyor...</span>
+                                    </div>
+
+                                    <button type="button" class="hidden md:flex items-center justify-center w-10 h-10 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg transition-all hover:scale-110" data-gx="close" aria-label="Kapat">
+                                        <i class="fas fa-times text-lg"></i>
+                                    </button>
+                                </div>
+
+                                <div class="gx-grid-view" data-gx="grid-view">
+                                    <div class="gx-grid" data-gx="grid-container"></div>
+                                </div>
+
+                                <div class="gx-focus-view hidden" data-gx="focus-view">
+                                    <button type="button" class="gx-nav gx-nav--prev" data-gx="prev" aria-label="Önceki">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <img data-gx="focus-img" class="gx-focus-img" src="" alt="" />
+                                    <button type="button" class="gx-nav gx-nav--next" data-gx="next" aria-label="Sonraki">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+
+                                    <div class="gx-strip">
+                                        <div class="gx-strip__inner" data-gx="thumb-strip"></div>
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                `.trim();
+
+                const modalEl = wrapper.firstElementChild;
+                if (!modalEl) throw new Error('Gallery modal injection failed');
+                document.body.appendChild(modalEl);
+                return modalEl;
+            }
+
+            function injectGalleryStyles() {
+                if (document.getElementById('gx-styles')) return;
+                const style = document.createElement('style');
+                style.id = 'gx-styles';
+                style.textContent = `
+                    @keyframes gxPulse {
+                        0%, 100% {
+                            box-shadow: 0 10px 26px rgba(59,130,246,.32), 0 0 0 3px rgba(59,130,246,.09);
+                            filter: brightness(1.01);
+                            transform: translateY(0) scale(1);
+                            border-color: rgba(59,130,246,.75);
+                        }
+                        50% {
+                            box-shadow: 0 12px 32px rgba(168,85,247,.34), 0 0 0 4px rgba(168,85,247,.10);
+                            filter: brightness(1.04);
+                            transform: translateY(0) scale(1.01);
+                            border-color: rgba(216,180,254,.70);
+                        }
+                    }
+                    @keyframes gxBackAlt {
+                        0%, 100% { opacity: 0; }
+                        50% { opacity: .28; }
+                    }
+                    .gx-modal{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:flex}
+                    .gx-modal.hidden{display:none}
+                    .gx-layout{width:100%;height:100%;display:flex;flex-direction:column}
+                    @media (min-width:768px){.gx-layout{flex-direction:row}}
+                    .gx-sidebar{width:100%;background:rgba(17,24,39,.96);border-bottom:1px solid rgba(255,255,255,.10);display:flex;flex-direction:column;flex-shrink:0;position:relative}
+                    @media (min-width:768px){.gx-sidebar{width:220px;border-bottom:0;border-right:1px solid rgba(255,255,255,.10)}}
+                    .gx-sidebar__top{padding:14px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.10)}
+                    .gx-sidebar__title{color:#fff;font-weight:800;letter-spacing:.2px}
+                    .gx-sidebar__subtitle{color:rgba(255,255,255,.55);font-size:11px;margin-top:2px}
+                    .gx-sidebar__list{padding:10px;display:flex;gap:8px;overflow-x:auto}
+                    @media (min-width:768px){.gx-sidebar__list{flex-direction:column;overflow-x:visible;overflow-y:auto;flex:1}}
+                    .gx-main{position:relative;flex:1;background:rgba(0,0,0,.65);overflow:hidden}
+                    .gx-topbar{position:absolute;top:0;left:0;right:0;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:10;pointer-events:none}
+                    .gx-topbar>*{pointer-events:auto}
+                    .gx-icon-btn{width:46px;height:46px;border-radius:9999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.38);color:#fff;display:flex;align-items:center;justify-content:center;transition:background .2s ease,border-color .2s ease}
+                    .gx-icon-btn:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22)}
+                    .gx-icon-btn--sm{width:34px;height:34px}
+                    @media (min-width:768px){.gx-icon-btn--sm{display:none}}
+                    .gx-back{position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:9999px;border:1px solid rgba(59,130,246,.55);background:linear-gradient(135deg, rgba(59,130,246,.92), rgba(37,99,235,.92));color:#fff;font-size:13px;font-weight:800;box-shadow:0 10px 30px rgba(59,130,246,.20);transition:transform .2s ease,filter .2s ease,box-shadow .2s ease;will-change:transform,filter,box-shadow,border-color}
+                    .gx-back > *{position:relative;z-index:1}
+                    .gx-back::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg, rgba(168,85,247,.95), rgba(126,34,206,.95));opacity:0;transition:opacity .2s ease;pointer-events:none}
+                    .gx-back:hover{transform:translateY(-1px);filter:brightness(1.05);box-shadow:0 14px 40px rgba(59,130,246,.28)}
+                    .gx-modal.gx-is-focus .gx-back{animation:gxPulse 1.8s ease-in-out infinite}
+                    .gx-modal.gx-is-focus .gx-back::after{animation:gxBackAlt 1.8s ease-in-out infinite}
+                    @media (prefers-reduced-motion: reduce){
+                        .gx-modal.gx-is-focus .gx-back{animation:none}
+                        .gx-modal.gx-is-focus .gx-back::after{animation:none}
+                    }
+                    .gx-back.hidden{display:none}
+                    .gx-back__text{display:none}
+                    @media (min-width:640px){.gx-back__text{display:inline}}
+                    .gx-badge{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:9999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.38)}
+                    .gx-badge__cat{color:#fff;font-weight:800;font-size:13px;letter-spacing:.2px}
+                    .gx-badge__sep{width:1px;height:16px;background:rgba(255,255,255,.20)}
+                    .gx-badge__info{color:rgba(255,255,255,.75);font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+                    .gx-filter{min-width:160px;display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:rgba(255,255,255,.78);transition:background .2s ease,border-color .2s ease,color .2s ease}
+                    @media (min-width:768px){.gx-filter{min-width:0}}
+                    .gx-filter:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);color:#fff}
+                    .gx-filter--active{background:rgba(59,130,246,.35);border-color:rgba(59,130,246,.55);color:#fff}
+                    .gx-filter__icon{width:26px;height:26px;border-radius:10px;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center}
+                    .gx-filter--active .gx-filter__icon{background:rgba(255,255,255,.18)}
+                    .gx-filter__text{flex:1;text-align:left;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+                    .gx-filter__count{font-size:11px;font-weight:800;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.10);padding:3px 8px;border-radius:9999px;min-width:26px;text-align:center}
+                    .gx-grid-view{height:100%;overflow:auto;padding:90px 16px 16px}
+                    @media (min-width:768px){.gx-grid-view{padding:90px 28px 28px}}
+                    .gx-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:1200px;margin:0 auto}
+                    @media (min-width:768px){.gx-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+                    .gx-card{position:relative;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);cursor:pointer}
+                    .gx-card:hover{border-color:rgba(59,130,246,.50)}
+                    .gx-card__img{width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .45s ease}
+                    .gx-card:hover .gx-card__img{transform:scale(1.08)}
+                    .gx-card__overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;opacity:0;background:rgba(0,0,0,.30);transition:opacity .25s ease}
+                    .gx-card:hover .gx-card__overlay{opacity:1}
+                    .gx-card__title{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;color:#fff;font-size:13px;font-weight:700;background:linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,0))}
+                    .gx-empty{grid-column:1/-1;color:rgba(255,255,255,.70);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 0}
+                    .gx-empty__icon{font-size:44px;opacity:.35;margin-bottom:12px}
+                    .gx-focus-view{position:absolute;inset:0;background:rgba(0,0,0,.92);padding:90px 16px 90px;display:flex;align-items:center;justify-content:center}
+                    .gx-focus-view.hidden{display:none}
+                    .gx-focus-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:16px;box-shadow:0 30px 90px rgba(0,0,0,.55);transition:opacity .2s ease}
+                    .gx-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:9999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.38);color:#fff;display:flex;align-items:center;justify-content:center;transition:background .2s ease,border-color .2s ease}
+                    .gx-nav:hover{background:rgba(59,130,246,.50);border-color:rgba(59,130,246,.55)}
+                    .gx-nav--prev{left:16px}
+                    .gx-nav--next{right:16px}
+                    .gx-strip{position:absolute;left:0;right:0;bottom:0;height:92px;background:rgba(17,24,39,.80);border-top:1px solid rgba(255,255,255,.10);backdrop-filter:blur(10px)}
+                    .gx-strip__inner{height:100%;display:flex;gap:8px;overflow-x:auto;padding:16px;align-items:center}
+                    .gx-thumb{width:64px;height:48px;object-fit:cover;border-radius:10px;cursor:pointer;opacity:.55;border:2px solid transparent;transition:opacity .2s ease,border-color .2s ease}
+                    .gx-thumb:hover{opacity:1}
+                    .gx-thumb--active{opacity:1;border-color:rgba(255,255,255,.95)}
+                    .gx-sections{width:100%;height:100%;overflow:auto;display:block}
+                    .gx-group-header{width:100%;color:#fff;font-size:18px;font-weight:700;margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.15);letter-spacing:.5px}
+                    .gx-group-header:first-child{margin-top:0}
+                    .gx-group-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+                    @media (min-width:768px){.gx-group-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+                    .gx-subgroup{display:flex;flex-direction:column;gap:4px;padding-left:44px;margin-bottom:8px}
+                    .gx-subgroup-mobile{display:flex;flex-direction:row;gap:8px;padding:0;overflow-x:auto;flex-wrap:nowrap}
+                    .gx-filter--back{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);margin-bottom:8px}
+                    .gx-filter--back:hover{background:rgba(255,255,255,.12)}
+                    .gx-subfilter{text-align:left;color:rgba(255,255,255,.6);font-size:12px;padding:6px 10px;border-radius:8px;transition:all .2s;display:flex;align-items:center;gap:8px;cursor:pointer}
+                    .gx-subfilter:hover{color:#fff;background:rgba(255,255,255,.05)}
+                    .gx-subfilter--active{color:#fff;background:rgba(255,255,255,.1);font-weight:600}
+                    .gx-subfilter__dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5}
+                    .gx-subfilter--active .gx-subfilter__dot{opacity:1;box-shadow:0 0 8px currentColor}
+                    .gx-subfilter__count{margin-left:auto;font-size:10px;font-weight:700;background:rgba(255,255,255,.15);padding:2px 6px;border-radius:9999px;min-width:20px;text-align:center}
+                    .gx-subfilter--active .gx-subfilter__count{background:rgba(59,130,246,.4)}
+                    .gx-room-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;max-width:1200px;margin:0 auto}
+                    @media (min-width:768px){.gx-room-cards{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:16px!important}}
+                    .gx-room-card .gx-card__overlay{flex-direction:column;background:rgba(0,0,0,.5);backdrop-filter:blur(2px)}
+                    .gx-room-card .gx-card__title{background:linear-gradient(to top, rgba(0,0,0,.9), rgba(0,0,0,.6) 50%, transparent)}
+                    .gx-card--back{background:rgba(255,255,255,.05);border:2px dashed rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center}
+                    .gx-card--back:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.4)}
+                    .gx-card__back-content{display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.7)}
+                    .gx-card--back:hover .gx-card__back-content{color:#fff}
+                    .gx-card__back-content i{font-size:24px}
+                    .gx-card__back-content span{font-size:14px;font-weight:700}
+                    .gx-tooltip{position:absolute;z-index:50;animation:gxBounce 2s infinite ease-in-out;pointer-events:none}
+                    .gx-tooltip.hidden{display:none}
+                    .gx-tooltip__content{background:#fbbf24;color:#1e3a8a;padding:12px;border-radius:12px;font-size:13px;display:flex;flex-direction:column;gap:8px;box-shadow:0 8px 20px rgba(0,0,0,.4);border:2px solid #fff;pointer-events:auto;min-width:240px;text-align:left}
+                    .gx-tooltip__header{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px}
+                    .gx-tooltip__text{font-weight:500;line-height:1.4;opacity:.9}
+                    .gx-tooltip__action{background:rgba(255,255,255,.9);border:none;color:#1e3a8a;font-size:11px;font-weight:700;padding:6px 10px;border-radius:6px;cursor:pointer;align-self:flex-start;transition:all .2s;margin-top:4px}
+                    .gx-tooltip__action:hover{background:#fff;transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.1)}
+                    .gx-tooltip__arrow{position:absolute;width:0;height:0;border-style:solid}
+                    .gx-tooltip__close{background:rgba(0,0,0,.1);border:none;color:#1e3a8a;cursor:pointer;padding:4px;border-radius:50%;margin-left:auto;display:flex;align-items:center;transition:background .2s}
+                    .gx-tooltip__close:hover{background:rgba(0,0,0,.2)}
+                    @keyframes gxBounce {
+                        0%, 100% { transform: translateY(0); }
+                        50% { transform: translateY(-10px); }
+                    }
+                    @keyframes scrollHint {
+                        0%, 100% { transform: translateX(0); opacity: 0.5; }
+                        50% { transform: translateX(5px); opacity: 1; }
+                    }
+                    @keyframes sidebarSwing {
+                        0% { transform: translateX(0); }
+                        40% { transform: translateX(-50px); }
+                        100% { transform: translateX(0); }
+                    }
+                    /* Mobile styles */
+                    .gx-tooltip{top:70px;left:14px;right:14px}
+                    .gx-tooltip__arrow{top:-8px;left:20px;border-width:0 8px 8px 8px;border-color:transparent transparent #fbbf24 transparent;filter:drop-shadow(0 -2px 2px rgba(0,0,0,.1))}
+                    /* Desktop styles */
+                    @media (min-width:768px){
+                        .gx-tooltip{top:80px;left:230px;right:auto;animation:gxBounceRight 2s infinite ease-in-out}
+                        .gx-tooltip__arrow{top:16px;left:-8px;border-width:8px 8px 8px 0;border-color:transparent #fbbf24 transparent transparent;filter:drop-shadow(-2px 0 2px rgba(0,0,0,.1))}
+                        @keyframes gxBounceRight {
+                            0%, 100% { transform: translateX(0); }
+                            50% { transform: translateX(10px); }
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            function getIcon(cat) {
+                if (cat === 'odalar') return 'fa-bed';
+                if (cat === 'yemekhane') return 'fa-utensils';
+                if (cat === 'ortak') return 'fa-couch';
+                if (cat === 'etut') return 'fa-book-reader';
+                if (cat === 'dis') return 'fa-building';
+                return 'fa-th-large';
+            }
+
+            function clamp(n, min, max) {
+                return Math.max(min, Math.min(max, n));
+            }
+
+            function toKey(url) {
+                const u = String(url || '');
+                return u.split('?')[0];
+            }
+
+            function escapeAttr(s) {
+                return String(s)
+                    .replace(/&/g, '&amp;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+            }
+
+            function escapeHtml(s) {
+                return escapeAttr(s);
+            }
+        })();
+
+    </script>
+
+    <!-- Room Modal Script -->
+    <script>
+        // Oda Verileri - Her oda tipi için ayrı odalar
+        const roomsData = {
+            '4-kisilik': {
+                title: '4 Kişilik Odalar',
+                subtitle: '4 kişilik odalarımızı inceleyin',
+                price: '₺4.500/ay',
+                rooms: [
+                    {
+                        id: '401',
+                        name: 'Oda 401',
+                        floor: '4. Kat',
+                        view: 'Bahçe Manzaralı',
+                        size: '28 m²',
+                        status: 'Müsait',
+                        features: ['4 Yatak', 'Banyo', 'Klima', 'Çalışma Masası'],
+                        description: 'Geniş ve ferah, 4 öğrencinin rahatça kalabileceği modern bir oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop'
+                        ]
+                    },
+                    {
+                        id: '402',
+                        name: 'Oda 402',
+                        floor: '4. Kat',
+                        view: 'Cadde Manzaralı',
+                        size: '26 m²',
+                        status: 'Müsait',
+                        features: ['4 Yatak', 'Banyo', 'Klima', 'Dolap'],
+                        description: 'Cadde manzaralı, aydınlık ve modern döşenmiş oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&h=600&fit=crop'
+                        ]
+                    },
+                    {
+                        id: '301',
+                        name: 'Oda 301',
+                        floor: '3. Kat',
+                        view: 'Bahçe Manzaralı',
+                        size: '27 m²',
+                        status: 'Dolu',
+                        features: ['4 Yatak', 'Banyo', 'Klima', 'Mini Buzdolabı'],
+                        description: 'Bahçe manzaralı, huzurlu bir ortam sunan oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&h=600&fit=crop'
+                        ]
+                    }
+                ]
+            },
+            '2-kisilik': {
+                title: '2 Kişilik Odalar',
+                subtitle: '2 kişilik odalarımızı inceleyin',
+                price: '₺6.500/ay',
+                rooms: [
+                    {
+                        id: '201',
+                        name: 'Oda 201',
+                        floor: '2. Kat',
+                        view: 'Bahçe Manzaralı',
+                        size: '20 m²',
+                        status: 'Müsait',
+                        features: ['2 Yatak', 'Özel Banyo', 'Klima', 'TV', 'Çalışma Masası'],
+                        description: 'İki kişi için ideal, özel banyolu konforlu oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=600&fit=crop'
+                        ]
+                    },
+                    {
+                        id: '202',
+                        name: 'Oda 202',
+                        floor: '2. Kat',
+                        view: 'Cadde Manzaralı',
+                        size: '22 m²',
+                        status: 'Müsait',
+                        features: ['2 Yatak', 'Özel Banyo', 'Klima', 'TV', 'Mini Buzdolabı'],
+                        description: 'Geniş, cadde manzaralı ve tam donanımlı oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop'
+                        ]
+                    },
+                    {
+                        id: '203',
+                        name: 'Oda 203',
+                        floor: '2. Kat',
+                        view: 'Bahçe Manzaralı',
+                        size: '21 m²',
+                        status: 'Dolu',
+                        features: ['2 Yatak', 'Özel Banyo', 'Klima', 'TV'],
+                        description: 'Sakin ve huzurlu, bahçe manzaralı oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop'
+                        ]
+                    },
+                    {
+                        id: '304',
+                        name: 'Oda 304',
+                        floor: '3. Kat',
+                        view: 'Cadde Manzaralı',
+                        size: '23 m²',
+                        status: 'Müsait',
+                        features: ['2 Yatak', 'Özel Banyo', 'Klima', 'TV', 'Balkon'],
+                        description: 'Balkonlu, ferah ve aydınlık premium oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop'
+                        ]
+                    }
+                ]
+            },
+            'tek-kisilik': {
+                title: 'Tek Kişilik Odalar',
+                subtitle: 'Tek kişilik odalarımızı inceleyin',
+                price: '₺9.000/ay',
+                rooms: [
+                    {
+                        id: '101',
+                        name: 'Oda 101',
+                        floor: '1. Kat',
+                        view: 'Bahçe Manzaralı',
+                        size: '16 m²',
+                        status: 'Müsait',
+                        features: ['1 Yatak', 'Özel Banyo', 'Klima', 'Mini Salon', 'TV', 'Çalışma Masası'],
+                        description: 'Maksimum konfor ve mahremiyet için tasarlanmış lüks tek kişilik oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop'
+                        ]
+                    },
+                    {
+                        id: '102',
+                        name: 'Oda 102',
+                        floor: '1. Kat',
+                        view: 'Cadde Manzaralı',
+                        size: '15 m²',
+                        status: 'Dolu',
+                        features: ['1 Yatak', 'Özel Banyo', 'Klima', 'Mini Salon', 'TV'],
+                        description: 'Şehir manzaralı, modern tasarımlı tek kişilik oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=600&fit=crop'
+                        ]
+                    },
+                    {
+                        id: '103',
+                        name: 'Oda 103',
+                        floor: '1. Kat',
+                        view: 'Bahçe Manzaralı',
+                        size: '17 m²',
+                        status: 'Müsait',
+                        features: ['1 Yatak', 'Özel Banyo', 'Klima', 'Mini Salon', 'Mini Buzdolabı'],
+                        description: 'Geniş, bahçe manzaralı premium tek kişilik oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=600&fit=crop'
+                        ]
+                    },
+                    {
+                        id: '501',
+                        name: 'Oda 501',
+                        floor: '5. Kat',
+                        view: 'Panoramik Manzara',
+                        size: '20 m²',
+                        status: 'Müsait',
+                        features: ['1 Yatak', 'Özel Banyo', 'Klima', 'Mini Salon', 'TV', 'Balkon'],
+                        description: 'En üst katta, panoramik manzaralı VIP tek kişilik oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop'
+                        ]
+                    },
+                    {
+                        id: '502',
+                        name: 'Oda 502',
+                        floor: '5. Kat',
+                        view: 'Panoramik Manzara',
+                        size: '18 m²',
+                        status: 'Müsait',
+                        features: ['1 Yatak', 'Özel Banyo', 'Klima', 'Mini Salon', 'TV'],
+                        description: 'Üst kat konumu ile sessiz ve huzurlu tek kişilik oda.',
+                        images: [
+                            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop',
+                            'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&h=600&fit=crop'
+                        ]
+                    }
+                ]
+            }
+        };
+
+        let currentImageIndex = 0;
+        let currentRoomImages = [];
+
+        function openRoomModal(roomType) {
+            const modal = document.getElementById('roomModal');
+            const data = roomsData[roomType];
+            
+            if (!data) return;
+            
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalSubtitle').textContent = data.subtitle;
+            
+            // Oda listesini oluştur
+            const roomList = document.getElementById('roomList');
+            roomList.innerHTML = data.rooms.map((room, index) => `
+                <div onclick="showRoomDetail('${roomType}', ${index})" 
+                     class="room-list-item cursor-pointer p-1.5 lg:p-2 rounded-lg border-2 border-transparent hover:border-primary/30 hover:bg-white transition-all snap-start flex-shrink-0 w-24 lg:w-auto ${index === 0 ? 'border-primary bg-white shadow-sm' : 'bg-white/80 lg:bg-white/50'}"
+                     data-room-index="${index}">
+                    <div class="flex flex-col lg:flex-row items-center gap-1 lg:gap-2">
+                        <div class="w-full lg:w-10 h-12 lg:h-8 rounded-md overflow-hidden flex-shrink-0">
+                            <img src="${room.images[0]}" alt="${room.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 min-w-0 text-center lg:text-left w-full">
+                            <div class="flex items-center justify-center lg:justify-start gap-1">
+                                <h4 class="font-semibold text-gray-800 text-[10px] lg:text-xs truncate">${room.name}</h4>
+                                <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 ${room.status === 'Müsait' ? 'bg-green-500' : 'bg-red-500'}"></span>
+                            </div>
+                            <p class="text-[9px] lg:text-[10px] text-gray-500 truncate">${room.floor}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // İlk odayı göster
+            showRoomDetail(roomType, 0);
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showRoomDetail(roomType, roomIndex) {
+            const data = roomsData[roomType];
+            const room = data.rooms[roomIndex];
+            
+            currentRoomImages = room.images;
+            currentImageIndex = 0;
+            
+            // Aktif oda stilini güncelle
+            document.querySelectorAll('.room-list-item').forEach((item, idx) => {
+                if (idx === roomIndex) {
+                    item.classList.add('border-primary', 'bg-white', 'shadow-sm');
+                    item.classList.remove('border-transparent', 'bg-white/50');
+                } else {
+                    item.classList.remove('border-primary', 'bg-white', 'shadow-sm');
+                    item.classList.add('border-transparent', 'bg-white/50');
+                }
+            });
+            
+            const featureIcons = {
+                'Yatak': 'fa-bed',
+                'Banyo': 'fa-bath',
+                'Klima': 'fa-wind',
+                'TV': 'fa-tv',
+                'Mini Salon': 'fa-couch',
+                'Çalışma Masası': 'fa-desk',
+                'Dolap': 'fa-box',
+                'Mini Buzdolabı': 'fa-snowflake',
+                'Balkon': 'fa-door-open'
+            };
+            
+            const getFeatureIcon = (feature) => {
+                for (const [key, icon] of Object.entries(featureIcons)) {
+                    if (feature.includes(key)) return icon;
+                }
+                return 'fa-check';
+            };
+            
+            const roomDetail = document.getElementById('roomDetail');
+            const detailContainer = roomDetail.closest('.overflow-y-auto');
+            
+            // Önce fade out
+            roomDetail.style.opacity = '0';
+            roomDetail.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                // Scroll to top
+                if (detailContainer) {
+                    detailContainer.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                
+                // İçeriği güncelle
+                roomDetail.innerHTML = `
+                <div class="space-y-6">
+                    <!-- Image Gallery -->
+                    <div class="relative rounded-2xl overflow-hidden bg-gray-100">
+                        <div class="aspect-video">
+                            <img id="mainRoomImage" src="${room.images[0]}" alt="${room.name}" 
+                                 class="w-full h-full object-cover transition-opacity duration-300">
+                        </div>
+                        ${room.images.length > 1 ? `
+                        <button onclick="prevImage()" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button onclick="nextImage()" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+                            ${room.images.map((_, i) => `
+                                <button onclick="goToImage(${i})" class="w-2.5 h-2.5 rounded-full transition-all ${i === 0 ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'}" data-dot-index="${i}"></button>
+                            `).join('')}
+                        </div>
+                        ` : ''}
+                    </div>
+                    
+                    <!-- Thumbnail Strip -->
+                    ${room.images.length > 1 ? `
+                    <div class="flex gap-2 overflow-x-auto pb-2">
+                        ${room.images.map((img, i) => `
+                            <button onclick="goToImage(${i})" class="flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-all ${i === 0 ? 'border-primary' : 'border-transparent hover:border-gray-300'}" data-thumb-index="${i}">
+                                <img src="${img}" alt="Görsel ${i + 1}" class="w-full h-full object-cover">
+                            </button>
+                        `).join('')}
+                    </div>
+                    ` : ''}
+                    
+                    <!-- Room Info -->
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="min-w-0 flex-1">
+                            <h3 class="text-lg lg:text-2xl font-bold text-gray-800">${room.name}</h3>
+                            <p class="text-gray-500 mt-0.5 lg:mt-1 text-xs lg:text-base">${room.floor} • ${room.view} • ${room.size}</p>
+                        </div>
+                        <span class="px-2 lg:px-3 py-0.5 lg:py-1 rounded-full text-xs lg:text-sm font-semibold flex-shrink-0 ${room.status === 'Müsait' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+                            ${room.status}
+                        </span>
+                    </div>
+                    
+                    <!-- Description -->
+                    <p class="text-gray-600 text-sm lg:text-base">${room.description}</p>
+                    
+                    <!-- Features -->
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-2 lg:mb-3 text-sm lg:text-base">Oda Özellikleri</h4>
+                        <div class="flex flex-wrap gap-1.5 lg:gap-2">
+                            ${room.features.map(feature => `
+                                <span class="bg-gray-100 text-gray-700 px-2.5 lg:px-4 py-1.5 lg:py-2 rounded-lg lg:rounded-xl text-xs lg:text-sm font-medium flex items-center gap-1.5 lg:gap-2">
+                                    <i class="fas ${getFeatureIcon(feature)} text-primary text-[10px] lg:text-sm"></i>
+                                    ${feature}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Action Button -->
+                    <div class="pt-3 lg:pt-4">
+                        <a href="#iletisim" onclick="closeRoomModal()" class="block w-full bg-primary hover:bg-dark text-white py-2.5 lg:py-3 px-4 lg:px-6 rounded-xl font-semibold text-center transition-colors text-sm lg:text-base">
+                            <i class="fas fa-phone mr-1.5 lg:mr-2 text-xs lg:text-sm"></i>Bilgi Al
+                        </a>
+                    </div>
+                </div>
+            `;
+                
+                // Fade in animasyonu
+                setTimeout(() => {
+                    roomDetail.style.opacity = '1';
+                    roomDetail.style.transform = 'translateY(0)';
+                }, 50);
+            }, 150);
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + currentRoomImages.length) % currentRoomImages.length;
+            updateGallery();
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentRoomImages.length;
+            updateGallery();
+        }
+
+        function goToImage(index) {
+            currentImageIndex = index;
+            updateGallery();
+        }
+
+        function updateGallery() {
+            const mainImage = document.getElementById('mainRoomImage');
+            if (mainImage) {
+                mainImage.style.opacity = '0';
+                setTimeout(() => {
+                    mainImage.src = currentRoomImages[currentImageIndex];
+                    mainImage.style.opacity = '1';
+                }, 150);
+            }
+            
+            // Update dots
+            document.querySelectorAll('[data-dot-index]').forEach((dot, i) => {
+                if (i === currentImageIndex) {
+                    dot.classList.add('bg-white', 'scale-125');
+                    dot.classList.remove('bg-white/50');
+                } else {
+                    dot.classList.remove('bg-white', 'scale-125');
+                    dot.classList.add('bg-white/50');
+                }
+            });
+            
+            // Update thumbnails
+            document.querySelectorAll('[data-thumb-index]').forEach((thumb, i) => {
+                if (i === currentImageIndex) {
+                    thumb.classList.add('border-primary');
+                    thumb.classList.remove('border-transparent');
+                } else {
+                    thumb.classList.remove('border-primary');
+                    thumb.classList.add('border-transparent');
+                }
+            });
+        }
+
+        function closeRoomModal() {
+            const modal = document.getElementById('roomModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // ESC tuşu ile modal kapatma
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeRoomModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
