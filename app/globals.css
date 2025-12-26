@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  color: #1f2937;
+  background-color: #FAFAFA;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #7C3AED, #EC4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.25);
+}
+
+.hero-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.room-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+/* Testimonials Carousel */
+.testimonials-carousel {
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.testimonials-carousel::-webkit-scrollbar { 
+    display: none;  /* Chrome Safari */
+}
+
+.testimonials-carousel:active {
+  cursor: grabbing;
+}
+
+.testimonials-carousel.dragging .testimonials-track {
+  pointer-events: none;
+}
+
+.testimonials-track {
+  transition: transform 0.3s ease;
+}
+
+.testimonials-carousel::before,
+.testimonials-carousel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.testimonials-carousel::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.testimonials-carousel::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+}
+
+/* Gallery Modal Styles */
+@keyframes gxPulse {
+    0%, 100% {
+        box-shadow: 0 10px 26px rgba(59,130,246,.32), 0 0 0 3px rgba(59,130,246,.09);
+        filter: brightness(1.01);
+        transform: translateY(0) scale(1);
+        border-color: rgba(59,130,246,.75);
+    }
+    50% {
+        box-shadow: 0 12px 32px rgba(168,85,247,.34), 0 0 0 4px rgba(168,85,247,.10);
+        filter: brightness(1.04);
+        transform: translateY(0) scale(1.01);
+        border-color: rgba(216,180,254,.70);
+    }
+}
+@keyframes gxBackAlt {
+    0%, 100% { opacity: 0; }
+    50% { opacity: .28; }
+}
+
+.gx-modal { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.92); display: flex; }
+.gx-layout { width: 100%; height: 100%; display: flex; flex-direction: column; }
+@media (min-width: 768px) { .gx-layout { flex-direction: row; } }
+.gx-sidebar { width: 100%; background: rgba(17,24,39,.96); border-bottom: 1px solid rgba(255,255,255,.10); display: flex; flex-direction: column; flex-shrink: 0; position: relative; }
+@media (min-width: 768px) { .gx-sidebar { width: 220px; border-bottom: 0; border-right: 1px solid rgba(255,255,255,.10); } }
+.gx-main { position: relative; flex: 1; background: rgba(0,0,0,.65); overflow: hidden; }
+
+/* Custom Scrollbar for room list if needed */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

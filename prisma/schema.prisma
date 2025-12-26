@@ -1,0 +1,147 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// Site-wide configuration (contact info, branding)
+model SiteConfig {
+  id           String   @id @default("main")
+  siteUrl      String   @default("https://www.gunesyurdu.com")
+  siteDomain   String   @default("gunesyurdu.com")
+  brandName    String   @default("Güneş Yurdu")
+  brandFull    String   @default("Güneş Kız Öğrenci Yurdu")
+  brandSubtitle String  @default("Kız Öğrenci Yurdu")
+  slogan       String   @default("Evinizden Uzakta, Sıcak Bir Yuva")
+  phone        String   @default("0312 123 45 67")
+  phoneRaw     String   @default("03121234567")
+  email        String   @default("info@gunesyurdu.com")
+  address      String   @default("Üniversiteler Mah. Kampüs Cad. No:15 Çankaya/Ankara")
+  workingHours String   @default("Hafta içi 09:00 - 18:00")
+  whatsapp     String   @default("905551234567")
+  mapEmbedUrl  String   @default("")
+  updatedAt    DateTime @updatedAt
+}
+
+// Social media links
+model SocialMedia {
+  id    String @id @default(cuid())
+  icon  String
+  bg    String
+  url   String
+  name  String
+  order Int    @default(0)
+}
+
+// Room types (1 kişilik, 2 kişilik, etc.)
+model RoomType {
+  id          String @id @default(cuid())
+  slug        String @unique
+  label       String
+  price       String
+  description String
+  color       String
+  image       String
+  order       Int    @default(0)
+  rooms       Room[]
+}
+
+// Individual rooms within room types
+model Room {
+  id          String   @id @default(cuid())
+  roomTypeId  String
+  roomType    RoomType @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+  name        String
+  floor       String
+  view        String
+  size        String
+  status      String   @default("available")
+  description String
+  features    String   // JSON array string
+  images      String   // JSON array string
+  order       Int      @default(0)
+}
+
+// Flexible page content storage (hero sections, features, etc.)
+model PageContent {
+  id        String   @id
+  content   String   // JSON string for flexible page data
+  updatedAt DateTime @updatedAt
+}
+
+// Gallery images
+model GalleryImage {
+  id       String @id @default(cuid())
+  src      String
+  title    String
+  category String
+  order    Int    @default(0)
+}
+
+// Testimonials
+model Testimonial {
+  id      String @id @default(cuid())
+  name    String
+  initial String
+  color   String
+  text    String
+  time    String
+  rating  Int    @default(5)  // 1-5 yıldız puanı
+  order   Int    @default(0)
+}
+
+// SSS (FAQ) - Sıkça Sorulan Sorular
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String   // Soru
+  answer    String   // Cevap
+  category  String   @default("genel") // genel, fiyat, kayit, yurt-hayati
+  order     Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+// Advanced SEO Metadata per page
+model SEOMetadata {
+  id           String   @id @default(cuid())
+  pageRoute    String   @unique // e.g., "/", "/hakkimizda", "/odalar/1-kisilik"
+  title        String?
+  description  String?
+  keywords     String?
+  ogImage      String?
+  canonicalUrl String?
+  noIndex      Boolean  @default(false)
+  updatedAt    DateTime @updatedAt
+}
+
+// Blog Posts for Content Marketing
+model BlogPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String
+  content     String
+  coverImage  String?
+  published   Boolean  @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// IP Ban ve Login Attempts
+model LoginAttempt {
+  id           String   @id @default(cuid())
+  ip           String   @unique
+  attempts     Int      @default(0)
+  bannedUntil  DateTime?
+  lastAttempt  DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
